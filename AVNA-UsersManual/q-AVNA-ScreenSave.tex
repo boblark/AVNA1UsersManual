@@ -1,0 +1,8 @@
+\section{Screen Saving}
+xxx
+\subsection{Description}
+xxx
+\subsection{Instructions}
+xxx
+\subsection{Discussion}
+The screen save to BMP allows the AVNA screen graphics to be saved.  However, it is available for any screen (there are 21 of them now), except the touch-screen calibration.  A BMP graphics file is saved in either of two ways.  First, if an $\mu$SD card is in the holder on the Teensy 3.6, there will be a touch button in the very upper-right corner.  This turns red during the screen save.  Up to 100 files can be saved to the $\mu$SD card with file names "AVNA1\_nn.BMP" with nn being the lowest of the hundred that is available.  The date and time for the files is not set as we have no clock.  Second, as an alternative to the $\mu$SD card, the code includes the ability to send a large hex file to the Serial Monitor.  Binary files don't work, so the hex version is needed.

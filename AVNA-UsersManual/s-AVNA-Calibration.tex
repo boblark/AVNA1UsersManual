@@ -1,0 +1,15 @@
+\section{AVNA Unit Calibration}
+xxx
+\subsection{Description}
+xxx
+\subsection{Instructions}
+\textbf{Touch Screen Calibration} - There is some variability to the scaling of the touch screen.  Until now, a nominal value was used.  The touch screen calibration allows tapping at the upper-left corner and the lower right corner, with the lowest and highest x and y values being saved.  This is recorded on the calibration screen until the upper-right corner is tapped at which point the values are made permanent.  In using this, be sure to tap on the screen many times, seeing if more extreme values can be found.  Also, there is no true "Cancel" for this test, except that if the upper-right corner is tapped before any  other, it will continue to use the old values.  It should be safe to just recalibrate the screen.
+
+\textbf{Voltage Input Calibration} - We need a basic reference to correct for variations in the gain of analog circuitry.  The preset values should be close, but variations are inevitable.  This calibration requires a known amplitude of sine wave set to 0.100 Volts RMS which is the same as 0.2828 Volts peak-to-peak. The frequency is not critical, but should be in the 1000 Hz range.  Apply this to the right hand "Transmission" terminals.  The 50-Ohm termination can be on or off as the important item is the voltage at the terminals.  Follow the on-screen instructions to do the calibration.  This calibrates the ASA and VVM. The AVNA uses only relative voltages and does not need this type of calibration.
+
+\textbf{Voltage Output Calibration} - Now we need to calibrate the ASG output levels.  This function assumes that the Voltage Input Calibration is correct and adjusts the ASG levels to correspond.  For this to work, the non-ground left and right terminals need to be clipped together.  Then follow the on-screen instructions.
+
+\textbf{EEPROM Update} - We keep adding items to the permanent EEPROM memory in the Teensy (this is Flash memory set up to emulate EEPROM).  At startup, the program checks the version that was used to write the EEPROM and adds nominal values for anything that was added after that version.  This prevents overwriting tune up values or the like.  If everything is up-to-date, the Serial monitor, at startup, should say, "Loading EEPROM data; Turn-on EEPROM version was 80; EEPROM Load of 536 bytes."  The first time version 80 is run, there will be notes about the updating of the data.
+
+\subsection{Discussion}
+xxx

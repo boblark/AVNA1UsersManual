@@ -1,0 +1,6 @@
+\section{System Issues}
+
+\textbf{SIMULTANEITY} - We have limited input and output ports.  Combinations of Instruments and functions is limited by this.  Usually, this will be caught by the firmware if you try the impossible.  For instance, the four signal generators are turned off when the Vector Network Analyzer is running.  What we can do is to have multiple generators on at once.  For instance, the use of two (or three) generators for intermodulation analysis is works well up to the overload point.  This, in part, is because the analog output amplifier uses much negative feedback and is quite linear.  Likewise combining signals and noise works well for setting specific S/N ratios, or other experiments.
+
+\textbf{COHERENCY} - If multiple waves are added together, and they are at non-harmonic related frequencies, the relative levels change at a fast rate.  In the other extreme, if the two
+waves are at the same frequency, they maintain a constant phase relationship. This can alter measurement results, depending on the phase. As implemented here, the phase relationship between two generators is a random  value.  For these reasons, you should not measure intermodulation distortion with frequencies, such as 1000 and 2000 Hz.  Standard frequenciey pairs, such as 700 and 1900 Hz or 60 Hz and 7000 Hz support predictable results.

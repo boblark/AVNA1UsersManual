@@ -1,0 +1,26 @@
+\section{AVNA Vector Voltmeter}
+xxx
+\subsection{Description}
+The Vector Voltmeter (VVM) measures the input rms voltage at any frequency up to about 40 kHz.  The frequency is set by the frequency of Signal Generator 1 (see below).  If the test is using the left side signal generator output, the phase shift measurement is useful and can be offset by a number set on the VVM screen, using Up/Down buttons.  If an external generator is used the phase will progress at a rate determined by the frequency difference.  The bandwidth of
+\subsection{Instructions}
+xxx
+\subsection{Discussion}
+The operation of the Vector Voltmeter (VVM) is worthy of a few words. As a test instrument, it is closely related to the transmission measurements part of the Vector Network Analyzer AVNA). Much software is shared between the two instruments. The AVNA determines the relative gain or loss, amplitude and phase, through the transmission path. The VVM is calibrated so that the magnitude of the incoming signal is measured, along with the phase difference between Signal generator \#1 and that signal.
+
+Two mixer (multiplier) outputs are the in-phase and quadrature signal levels. The square root of the sum of the squares of these two provides the magnitude of the incoming signal. The Signal Generator \#1 (SG \#1) sets the frequency of the measurement. Low pass filtering after the mixers sets the requirement that the incoming signal must be within a few Hz of the SG \#1 frequency. In many cases, it is easiest to just use the Signal Generator output on the Impedance measuring terminals of the AVNA which is both on frequency and without having the phase changing with time.
+
+If the SG \#1 signal is used as a signal source, the phase will not be shifting with time with time. For this the phase offset can be useful. This has up/down buttons to allow setting to 0.1 degree. The offset can be positive or negative. This sis a convenience for zeroing the displayed phase and does not change the basic measurement.
+
+The input needs to be within the range of the ADC. The maximum input is a little more than 0.2 Vrms or 0.6 V p-p.  Higher voltages require an external voltage divider.  The VVM can be used with the 50-Ohm input terminator, or not for which the input impedance is 1-megohm in parallel with around 25 pF.  In all cases, the VVM shows the voltage at the input terminals.  The displayed voltage is the RMS value.  This is the same as HP used on the (now  old) 8405A VVM.   If the waveform is not sinusoidal, and there are harmonics, the displayed value is for the fundamental at the frequency of SG \#1.
+
+You can see how close you are to overload by the little "ADC \%p-p=xx.x" on the screen.  This is the per cent of full ADC range for  the input.  If the level gets to 100\%, the voltage display turns red.
+
+The very narrow bandwidth of the VVM allows low level signals to be measured.  With SG \#1 turned off, I see a residual noise of about 10 uV.  But to use that, an external source generator is needed, with SG \# 1 tuned to the same frequency.  Otherwise, leakage through the CAL switch U4B in the AVNA causes a signal of about 55 uV with the 50 Ohm terminator or around 1.5 mV without.
+
+The HP 8405 VVM has two inputs and phase-locked tuning to the reference input.  We only have one input channel, and so this feature cannot be supported.  But wait, there actually are two inputs.  If the AVNA was rewired to remove R46 to R49 and bring those leads to a switch and to a second input connector, a full 8405A style phase-locked loop could be implemented.  But, not now!
+
+Also, if you fail to see a measurement, it is most likely that SG \#1 is not within a few Hz of the frequency of the input signal.
+
+A couple of minor corrections.  In the example, the comments on the SigGen settings have the wrong amplitude levels.   The commands are OK.  The correct comments are \\ \\
+ \texttt{SIGGEN 1 1 1234.56 0.1 3}  // SG \#1 as a triangle wave 0.1 v p-p \\
+ \texttt{SIGGEN 4 1 0.0 0.003 0}  // SG \#4 Gaussian White Noise, $\sigma = 0.003$\\

@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+\usepackage{palatino} %  Sets typeface as Palatino
+%\usepackage{times}    %  Sets typeface as Times
+%\usepackage{newcent}  %  Sets typeface as New Century Schoolbook
+%\usepackage{bookman}  %  Sets typeface as Bookman
+%
+%\usepackage{pictex}   %  use to activate pictex
+%\usepackage{eurosym}  %  use \euro to make a Euro symbol
+\usepackage{fancyhdr,xspace}
+%\usepackage{graphicx,epstopdf}  % Use for graphics with TeXShop
+%\usepackage{dcolumn}    % Controls number of decimal places in tabular
+%\usepackage{steinmetz}  % phase and angle notation
+%\usepackage[printonlyused,withpage]{acronym}
+%\usepackage{color} %  color for soul, \rx-\cx for type color
+%\usepackage{ulem}  %  underlining, etc
+%\usepackage{soul}  %  underlining, etc  (needs color.sty)
+\usepackage{lastpage,float}
+\usepackage{draftwatermark}       % This puts DRAFT across each page
+%
+\usepackage{latexsym, amssymb}   % include for mathematical symbols
+%
+%\usepackage[textures]{changebar} % use \cbstart and \cbend around changes
+%\usepackage[pdftex]{changebar}   % \cbdelete creates a fat change bar
+%
+%\usepackage[xcolor=pdftex]{changes}      % text change mark-up utility
+%\definechangesauthor{EW}{orange}         % EW changes in orange
+%
+\pagestyle{fancy}
+%
+\lfoot{\scriptsize{AVNA-Documentation.tex}}  % Put File Name Here}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\rfoot{\scriptsize{\today}}
+\lhead{}
+\chead{}
+\rhead{AVNA Documentation}
+%
+\title{\textbf{AVNA User's Manual}}
+\author{Bob Larkin W7PUA \\ Evans Wetmore K3VFA} %  name \\ address \\ and so on
+%
+\newcommand{\q}[1]{\textquotedblleft#1\textquotedblright} % puts text in quotes
+\newcommand{\horizl}[1]{\makebox[#1]{\hrulefill}} % horizontal line
+\newcommand{\degr}[1]{#1\mbox{\raisebox{4pt}{$\circ$}\hspace{-.5pt}}\hspace{.5mm}}
+\newcommand{\vecr}[1]{\raisebox{8pt}{$\rightharpoonup$}\hspace{-11pt}\textbf{#1}}
+\newcommand{\eg}{\textit{e.g.}, }
+\newcommand{\ie}{\textit{i.e.}, }
+\newcommand{\moca}{\textsf{MOCA}\textsuperscript{\texttt{R}\hspace{-6.8pt}$\bigcirc$}\xspace}
+\newcommand{\ebno}{$E_b/N_0$\xspace}
+\newcommand{\sqft}{ft\textsuperscript{2}\xspace}
+\newcommand{\sqin}{in\textsuperscript{2}\xspace}
+\newcommand{\sqm}{m\textsuperscript{2}\xspace}
+\newcommand{\uvm}{${\mu}V/m$\xspace} % microvolts per meter
+%\newcommand{\rx}[1]{\textcolor{red}{#1}}     % red text [color.sty]
+%\newcommand{\gx}[1]{\textcolor{green}{#1}}   % green text [color.sty]
+%\newcommand{\bx}[1]{\textcolor{blue}{#1}}    % blue text [color.sty]
+%\newcommand{\yx}[1]{\textcolor{yellow}{#1}}  % yellow text [color.sty]
+%\newcommand{\mx}[1]{\textcolor{magenta}{#1}} % magenta text [color.sty]
+%\newcommand{\cx}[1]{\textcolor{cyan}{#1}}    % cyan text [color.sty]
+%
+%\newcolumntype{d}[1]{D{.}{.}{#1}}   % for decimal columns [dcolumn.sty]
+%                                      #1 is number of decimal places
+%
+%\renewcommand{\abstractname}{Executive Summary} % Changes "Abstract" to
+%                                                   "Executive Summary"
+%
+%\renewcommand{\familydefault}{\sfdefault} % makes sans serif font default
+%
+%\renewcommand{\familydefault}{\ttdefault} % makes typewriter font default
+%
+%\renewcommand{\baselinestretch}{2} % Turns on double-spacing
+%\normalsize                        % This is also needed for double spacing
+%
+%\SetWatermarkText{CONFIDENTIAL}   % This replaces DRAFT with CONFIDENTIAL
+%\SetWatermarkScale{0.7}           % The {0.7} sizes CONFIDENTIAL
+%
+\begin{document}
+\addtocounter{secnumdepth}{2} % This allows subsubsections to be numbered
+\addtocounter{tocdepth}{2} % This allows subsubsections in Table of Contents
+%
+%\input epsf.def 		% Turns on EPSF Macro
+%
+%\input BoxedEPS         % Turns on Boxed EPS Macro
+%\SetTexturesEPSFSpecial % needed for Boxed EPS Macro
+%\HideDisplacementBoxes  % turns off bounding boxes for Boxed EPS Macro
+%
+%\input{seteps}  % This sets up .eps graphics
+%
+%\input{picmacs.tex}  % Cut-and-Paste Pictures Macro
+%
+%\input{table}   % This enables Wichura Table Macro
+%
+\maketitle
+\thispagestyle{fancy}
+%
+\tableofcontents
+%\listoffigures
+%\listoftables
+%
+\restylefloat{table}  % allows use of [H] for tables--put it here!
+\restylefloat{figure} % allows use of [H] for figures--put it here!
+%
+%\sffamily  % Puts Abstract in San Serif font
+%\abstract{\textit{Text goes here}}
+%\rmfamily  % Restores Roman Font for Remainder of Document
+%
+\setlength{\parskip}{0.25in} % Puts 0.25" between paragraphs
+
+\input{a-AVNA-Intro}
+\input{c-AVNA-ZMeasure}
+\input{e-AVNA-AVNA}
+\input{g-AVNA-VectorVolts}
+\input{i-AVNA-Spectrum}
+\input{k-AVNA-SigGen}
+\input{m-AVNA-NoiseMeasure}
+\input{o-AVNA-Delay}
+\input{q-AVNA-ScreenSave}
+\input{s-AVNA-Calibration}
+\input{t-AVNA-System.tex}
+\input{v-AVNA-Serial}
+
+%\input{EW-AcroList.tex}
+\end{document}

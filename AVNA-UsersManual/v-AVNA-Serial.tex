@@ -1,0 +1,237 @@
+\section{AVNA Serial Interface}
+xxx
+\subsection{Description}
+Commands are entered by the USB serial link to the Teensy 3.6 board. The Teensy appears to the Host computer as a \q{Serial Device}. As such, it can be controlled by an external program for graphing and the like.  For manual control, the \q{Arduino Serial Monitor} that is accessed from the Arduino IDE under the menu \q{Tools}Äù is useful.  This monitor (terminal) supports CTRL-C copy and data can be gathered that way.
+
+\subsection{General Command Syntax}
+The format for all commands going to the AVNA is
+\begin{verbatim}
+    CMD param1 param2 ....
+\end{verbatim}
+where \texttt{CMD} is 1 or more characters, and the number of parameters varies.  Only capital letters are valid for the \texttt{CMD} field. Error checking is not done on parameters.  If 5 parameters are allowed, and only the first two are to be set, the last 3 do not need to be sent.  Also the delimiter is shown as a space, but commas can be used as well.
+
+For common commands used for manual entry, there are single character short cuts.  For instance, \texttt{FREQ} and \texttt{F} are equivalent. See Section 5 for a complete list.
+
+\subsection{Operational Commands}
+
+\begin{description}
+
+\item[\texttt{ZMEAS refR}]
+This command sets the measurement to Impedance and the reference resistor value to \texttt{refR}.  Valid \texttt{refR} values are either 50 or 5000 ohms.
+
+\item[\texttt{TRANSMISSION refR}]
+This command sets the measurement to Transmission and the reference resistor value to \texttt{refR}.  Valid \texttt{refR} values are either 50 or 5000 ohms.
+
+\item[\texttt{FREQ} \texttt{f}]
+This command sets the measurements to a single (non-sweep) frequency. The frequency is set to \texttt{f} which can be either an integer or a decimal number from 10 to 40000.   The parameter \texttt{f} regards 100.0 and 100 as the same.  The achieved frequency may be slightly different than \texttt{f} to provide proper averaging of the multiplier outputs.
+
+\item[\texttt{SWEEP}]   No parameters are used.  The 13 frequency sweep is set up, but not run (see \texttt{RUN} command).
+
+\item[\texttt{LINLOG rs ts}]  changes the units used for outputs to the serial monitor,
+  or to the Touch Display.  The four numbers following the \texttt{LINLOG} command set:
+\begin{description}
+\item[\texttt{rs} = 0]  Reflection coefficient to Serial in dB, and phase in degrees
+\item[\texttt{rs} = 1]  Reflection coefficient to Serial in magnitude (0,1) and phase in degrees
+\item[\texttt{rs} = 2]  Reflection data to Serial as equivalent Series Impedance or Parallel Suseptance (see \texttt{SERPAR} command)
+\item[\texttt{ts} = 0]  Transmission data to Serial in dB, and phase in degrees
+\item[\texttt{ts} = 1]  Transmission data to Serial in magnitude and phase in degrees
+\end{description}
+   Default is the original values, for backward compatibility:\mbox{ \texttt{LINLOG 2 1}.}
+
+   Short commands work if you do not want to change the touch display. For instance, \texttt{LINLOG 0} will
+   just make the serial output in dB and degrees for impedance.
+
+   The command \texttt{LINLOG} without any parameters will return the current settings, such as \texttt{LINLOG 0 0}.
+
+   Settings are saved in EEPROM and so survive the power shutdown.
+
+   This makes a variety of Serial outputs available.  For instance, for impedance measurement of a 200 uH inductor at
+   10 KHz.:
+
+    With \texttt{LINLOG 0 0}:  the serial monitor shows a series of lines:
+      \\ \texttt{10000.000 Hz\\ Return Loss = 0.486 dB\\  Phase = 150.74}
+
+    With \texttt{LINLOG 1 0}:  the serial monitor shows a series of lines:
+      \\ \texttt{10000.000 Hz\\ Reflection Coefficient = 0.94565\\  Phase = 150.74}
+
+    With \texttt{LINLOG 2 0}:  the serial monitor shows a series of lines:
+      \\ \texttt{10000.000 Hz\\ Series RX: R=1.494 X=13.042 L= 207.6uH Q=8.73}
+      \\ \texttt{10000.000 Hz\\ Parallel GB: G=0.008667760 B=-0.075683906 R= 115.37 L= 207.6uH Q=8.73}
+
+    With \texttt{LINLOG 2 0} and \texttt{SERPAR 1 0} the serial monitor omits the suseptance:
+      \\ \texttt{10000.000 Hz Series RX: R=1.494 X=13.042 L= 207.6uH Q=8.73}
+
+    If the output is intended to be read by a program, you do not want all the annotation.  When this is stopped by
+    \texttt{ANNOTATE 0}, the data fields become comma separated, which spread sheets are happy with.  For instance, the inductor
+    measurement with "\texttt{LINLOG 1 0} looks like
+      \texttt{10000.000,0.94565,150.74}.
+    The second number controls the transmission format in a similar manner, but options are only 0 or 1.
+
+\item[\texttt{CAL}]
+No parameters are required.  This is an immediate calibrate of either Z or T measurements at either a single frequency or all 13 sweep frequencies.  This must follow \texttt{FREQ} or \texttt{SWEEP} and \texttt{ZMEAS} or \texttt{TRANSMISSION} to do the proper calibrate.  This command must precede \texttt{RUN}.  Note that component connections can be left in place for \texttt{CAL} of impedance measurements, but transmission measurements need a reference path for proper calibration.
+
+\item[\texttt{RUN nRun}]
+This command causes the selected measurement to occur, either single frequency or a full set of swept measurements.  The parameter, \texttt{nRun} is the number of measurement sets made.  An \texttt{nRun} value of 0 causes a continuous set of measurements to be made.  That is, \texttt{RUN 1} is a single measurement set;  \texttt{RUN 27} does 27 sets and stops.  Any new command will break the \texttt{RUN} command, so \texttt{RUN 0} is not really forever.
+
+\item[\texttt{POWER}] No parameters are required.  This is a power sweep of transmission measurements at a single frequency.  Implementation is in place, although not thoroughly tested.  Documentation is coming.
+
+\item[\texttt{SAVE}]   No parameters are required.  This saves the current state to \mbox{EEPROM} for the next power down.  This is seldom needed, as it is automatic if a parameter, such as the reference impedance is changed.
+
+\item[\texttt{LOAD}]   No parameters are required.  Complements \texttt{SAVE} and retrieves settings from EEPROM.  Also seldom needed.
+
+\item[\texttt{DELAY msDelay}]   sets a delay between repeated runs (see \texttt{RUN} command).  The parameter \texttt{msDelay} is the amount of delay in milliseconds.  This applies to measurements over the serial link and not the touch display.
+
+\item[\texttt{CALDAT}]  Not used at this time.
+
+\item[\texttt{SERPAR ser par}] sets type of output data sent back to a host PC, during Z measurements, where:
+\begin{center}
+\begin{tabular}{c l}
+ser = 0 & Do not transmit series R-X data \\
+ser = 1 & Transmit series R-X data \\
+par = 0 & Do not transmit parallel G-B data \\
+par = 1 & Transmit parallel G-B data \\
+\end{tabular}
+\end{center}
+
+For instance, the command \texttt{SERPAR 0 1} would include data for parallel G-B representation of the measured impedance.
+
+The normal representation for an impedance is the (\texttt{ser = 1}) series form specified by a resistance, R, and a reactance, X connected in series..
+
+When \texttt{par = 1}, representation is the mathematically related parallel conductance, G, and susceptance, B.
+
+Note that annotation of the general form "R=" can be added for both impedance forms by the "\texttt{ANNOTATE 1}" command.
+
+Avoid having both \texttt{ser = 0} and \texttt{par = 0}, as there will be no output to the PC, and there will be no obvious reason.
+
+Unless modified by a \texttt{SERPAR} command, the unit defaults to \newline \texttt{SERPAR 1 1}.
+
+\item[\texttt{TEST rys sws}] This command sets the three relays and switches .  This is not normally used for measurements, as the proper relay settings will be made by a measurement command, such as \texttt{ZMEAS}.  (See TestCommand()  in the .INO)
+
+\item[\texttt{BAUD}]   Do not use.  All USB communications on the USB port are at 12 MBits/sec
+
+\item[\texttt{ANNOTATE 0} or \texttt{1}]  Responses can have annotation (1) or no annotation (0), over the serial communication.
+
+\item[\texttt{VERBOSE 0} or \texttt{1}]  For (1), extra information is transmitted. For (0), no extra information is transmitted.
+
+\item[\texttt{SCREENSAVE n}] does a single save of whatever is shown on the screen.  The parameter n is
+\begin{description}
+\item[n is 1] Send the screen BMP image over the USB Serial link using Intel Hex
+\item[n is 2] Save the BMP image to the uSD card, exactly as is done with the touch screen command.
+\end{description}
+
+For example, "\texttt{SCREENSAVE 1} $<Enter>$" will cause the transmission of many lines of Intel Hex.
+
+For n=2, there is serial feedback in the form of the new file name, only if you have set "\texttt{VERBOSE 1}".  Otherwise it is silent.
+
+Now for n=1, the next step is to convert all 14,409 lines of hex data to a BMP file!   \textit{Because there is not a Windows 10 or Mac available to test on, this procedure for transferring a screen image to a .bmp bitmap file in your PC is for Linux. If anyone has a similar procedure for Windows or the Mac, please share it with us.}
+
+\begin{enumerate}
+\item Open the Arduino IDE (with Teensyduino installed) and make sure that the regular serial interface is operating. This involves selecting the menu item Tools/Board "Teensy 3.6", the menu item Tools/Port: "dev/ttyACM0 Serial (Teensy3.6)", or similar and selecting the menu item Tools/Serial Monitor to open the serial terminal.
+
+\item Make sure the AVNA is on and connected via the USB cable. Fiddle until you have a screen that you want to save. This can be done either by touch screen operation or by serial commands.
+
+\item On the top line of the Arduino Serial Monitor, type, "\texttt{SCREENSAVE 1} $<Enter>$" without the quotes. The Monitor will show about 14,409 lines of hex code, printed in about 5 seconds. The cursor will be at the bottom.
+
+\item Starting with the right end of the last line, highlight that line, "\texttt{:00000001FF}". Then, being careful to not click in the text area, use the scroll bar to go to the top of the hex text. Hold down the Shift key and carefully left-click on the start of the first, "\texttt{:020000040000FA}" line. The entire hex text should now be highlighted.
+
+\item To get the hex to the clipboard, just hold down the CTRL key and hit '\texttt{c}'. There is no feedback from this. There is no menu item for this step, only the Ctrl-c.
+
+\item Paste this entire hex area into your text editor (I use Geany) and save it to a a file with type \texttt{.hex}. That might be \\ \texttt{/home/me/Documents/myscreen.hex}.
+
+\item Open a Terminal and navigate to the directory location of the file just created, such as "\texttt{cd /home/me/Documents}." Now we will create the \texttt{.bmp} bitmap file, myscreen.bmp, that was the goal. Using the nifty \texttt{objcopy} utility, the command is \texttt{objcopy -I ihex -O binary myscreen.hex myscreen.bmp}.
+
+\end{enumerate}
+\end{description}
+Any graphics program will recognize this file type. It maybe desirable to lossless compress the file to, for instance, a \texttt{.gif} file. The redundancy in the screens \texttt{.bmp} is very high and the savings from compression are quite useful.
+
+An almost last item: I think I mentioned before that if you examine the screen saves very carefully, you will find a few pixels that are the wrong color. This is a bug in the Teensy ILI9341\_t3 library that seems to be from a timing error in the DMA read of the screen. It does not effect the usefulness of the images.
+
+A second item: The \texttt{.hex} file has three hex encoded bytes per pixel. There are 320 x 240 pixels, or a total of 230,400 bytes of data. This is more bytes than a 16-bit address can handle. Intel Hex originally was 16-bit only, but later extended to 32-bits with the "type 4 extended address." The objcopy utility reads the extended addresses, but some Intel Hex readers may not, so be aware if there are issues.
+
+\subsection{Setup Commands}
+\begin{description}
+
+\item[\texttt{PARAM1 num refR50 refR5K}]
+This command is used to set the "exact" values of the two reference resistors (\texttt{refR50} and \texttt{refR5K}), if known.  \texttt{refR50} and \texttt{refR5K} default to the design values of 50.00 ohms and 5000.00 ohms respectively. The parameter \texttt{num} is either 0 or 99. A value 0 causes the reference resistor values to be set to the two parameter values, \texttt{refR50} and \texttt{refR5000}.  A num value 99 causes \underline{ALL} EEPROM values to be set to the defaults, including \texttt{PARAM2} below. \textit{Use the 99 value with care.}  An example is \q{\texttt{PARAM1 0 50.22 5017.3}} which sets the two reference values, \texttt{refR50} and \texttt{refR5K}, to 50.22 and 5017.3 ohms respectively.  \texttt{PARAM1} with no following parameters returns the current two reference resistor values.
+
+\item[\texttt{PARAM2 capInput resInput capCouple seriesR seriesL}]
+Serves the changing of correction factors for the impedance measurements.
+ For instance,
+ \begin{verbatim}
+ "PARAM2 37.0  1000000.0    0.22    0.07   20.0"
+ [units]  pF      Ohm        uF      Ohm    nH
+ \end{verbatim}
+ sets the input shunt capacity, the shunt resistance, the coupling cap, lead resistance and lead inductance.
+Note \texttt{capInput} is the most likely item to change, and it can be changed with simply "\texttt{PARAM2 34.8}"
+To obtain current values, type  \texttt{PARAM2}  with no parameters
+
+\item[\texttt{TUNEUP n}] is a set of six commands (\texttt{n = 1, 2, 3, 4, 5, or 6}) used at setup time or whenever values need to be checked. These are the values that correct for circuit \q{stray} components to improve the accuracy of impedance measurements. This command is available only over the serial port (no touch screen). It is directed manually, since components, opens, and shorts need to be connected.  These measurements determine the six values that are listed by the two commands, \texttt{PARAM1} and \texttt{PARAM2} (not including the non-critical 0.22 uF coupling capacitor).  The intention is that \texttt{TUNEUP} be used in 1 to 5 order. (See the separate write-up on doing the tuneup.) The \texttt{TUNEUP} family includes:
+\begin{description}
+\item[\texttt{TUNEUP}] with no "\texttt{n}" prints a summary of this procedure.
+
+\item[\texttt{TUNEUP 1}]  with a short circuit on the Z terminals measures the stray resistance and inductance (\texttt{seriesR \& seriesL}).
+
+\item[\texttt{TUNEUP 2 REXT50}] (1) find a resistor around 50 ohms, (2) as accurately as possible, measure the actual resistance of this resistor (in ohms), (3) then run \texttt{TUNEUP 2 REXT50};  enter the actual measured value (which will probably not be exactly 50 ohms) in place of \texttt{REXT50}.
+
+\item[\texttt{TUNEUP 3 REXT5K}] (1) find a resistor around 5000 ohms, (2) as accurately as possible, measure the actual resistance of this resistor (in ohms), (3) then run \texttt{TUNEUP 3 REXT5K};  entering the actual measured value (which will probably not be exactly 5000 ohms) in place of \texttt{REXT5K}.
+
+\item[\texttt{TUNEUP 4}] with the Z terminals open measures the internal 1 Megohm resistor and the input capacity (\texttt{resInput \& capInput}).
+
+\item[\texttt{TUNEUP 5}] causes the six values to be made permanent.
+
+\item[\texttt{TUNEUP 6}] reverts to the original six values that were used before \texttt{TUNEUP} was started.
+\end{description}
+Any of the steps can be omitted, \eg  if no precise resistor around 50 ohms is available.  But, the ascending order from 1 to 5 is important, in that, for instance, the value of the 5000 ohm reference affects the open circuit answers.
+
+\end{description}
+
+\subsection{Example of Commands}
+
+As an example, a swept measurement of transmission data, as commanded for non-manual use, might look like the following:  This does 1 Hz steps from 950 to 1050 Hz.  Obviously, the \texttt{F xxx R 1} repetition would be done by a loop in a control program.
+\newpage
+\begin{verbatim}
+T 50
+SWEEP
+CAL
+(Connect device to be measured for transmission)
+F 950
+R 1
+F 951
+R 1
+F 952
+R 1
+. . .
+F 1049
+R 1
+F 1050
+R 1
+\end{verbatim}
+
+\section{Shortened Form of Commands}
+\begin{center}
+\begin{tabular}{|c||c|} \hline
+\textbf{Full Command}   &  \textbf{Abbreviation}  \\ \hline \hline
+\texttt{ZMEAS}    &   \texttt{Z} \\ \hline
+\texttt{TRANSMISSION}   &   \texttt{T} \\ \hline
+\texttt{FREQ}   &   \texttt{F} \\ \hline
+\texttt{CAL}   &   \texttt{C} \\ \hline
+\texttt{RUN}   &  \texttt{R} \\ \hline
+\texttt{POWER}    &  \texttt{P}  \\ \hline
+\texttt{SAVE }   &   \texttt{S}  \\ \hline
+\texttt{LOAD}    &   \texttt{L}  \\ \hline
+\texttt{DELAY}    &   \texttt{D}  \\ \hline
+\texttt{CALDAT}   &    none \\ \hline
+\texttt{SERPAR}   &   none   \\ \hline
+\texttt{PARAM1}   &   none  \\ \hline
+\texttt{PARAM2}   &   none  \\ \hline
+\texttt{TUNEUP}   &   none  \\ \hline
+\texttt{LINLOG}    &    none  \\ \hline
+\texttt{BAUD}        &   \texttt{B}  \\ \hline
+\texttt{ANNOTATE}   &   \texttt{A}  \\ \hline
+\texttt{VERBOSE}     &   \texttt{V}  \\ \hline
+
+\end{tabular}
+\end{center}
+
+\subsection{Discussion}
+xxx
