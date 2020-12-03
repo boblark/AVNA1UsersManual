@@ -15,7 +15,15 @@ The capabilities of Version 0.82 are the following:
 
 \section{Power Up}When the AVNA is turned on, it starts with an "Audio Test Instrument" screen that allows selection of the function.  This is, as usual, selected by the six touch screen buttons at the bottom of the screen.  In addition, if an $\mu$SD card is present in the Teensy 3.6 socket, a button with "S"  shows in the upper right corner for "Screen Save".
 
-At startup, the Serial Monitor shows the status of the $\mu$SD card and a "\texttt{DIR /ls}" listing such as: 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.75]{zAVNA_Home}
+\caption{Power-up Screen}
+\label{power-up-label}
+\end{center}
+\end{figure}
+
+At startup, the Serial Monitor shows the status of the $\mu$SD card followed by a directory listing. For example: 
 \begin{itemize}
   \item Initializing SD card...and a card is present.
   \item Partition found: FAT32
