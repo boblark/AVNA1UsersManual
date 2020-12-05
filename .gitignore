@@ -11,6 +11,9 @@
 *.log
 *.toc
 
+# Main PDF
+AVNA-UsersManual.pdf
+
 # Prerequisites
 *.d
 
