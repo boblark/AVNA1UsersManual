@@ -136,16 +136,16 @@ Two different values are shown, corresponding to the two reference resistor valu
 \end{center}
 \end{figure}
 Figure \ref{AVNA_900-label} shows the deceptively simple measurement circuit.  A software Direct Digital Synthesis (DDS) in the Teensy DSP creates a sine wave signal at a frequency between 10 and 40,000 Hz.  This is converted to an analog voltage by the left DAC on the Teensy Audio Adapter board which then goes to an audio amplifier producing the analog signal  \vecr{$v_R$} seen on the diagram.
-The overhead bar indicates that this is a complex voltage where we care about the phase of the sine wave as well as the amplitude.  \vecr{$v_R$} is applied to the series combination of our reference resistor, \(R_R\) and the unknown impedance, \(\bar{Z_u}\).  This results in a current through the pair  of \(\bar{v_R}/(R_R + \bar{Z_u})\).  By measuring the complex voltage at the top of the unknown, \(\bar{v_Z}\) we can determine this current as
+The overhead bar indicates that this is a complex voltage where we care about the phase of the sine wave as well as the amplitude.  \vecr{$v_R$} is applied to the series combination of our reference resistor, \(R_R\) and the unknown impedance, \(\vecr{Z_u}\).  This results in a current through the pair  of \(\vecr{v_R}/(R_R + \vecr{Z_u})\).  By measuring the complex voltage at the top of the unknown, \(\vecr{v_Z}\) we can determine this current as
 \begin{equation}
- \bar{i_u}=(\bar{v_R} -\bar{v_Z})/R_R
+ \vecr{i_u}=(\vecr{v_R} -\vecr{v_Z})/R_R
 \end{equation}
  This in turn allows calculating the unknown impedance as
 \begin{equation}
- \bar{Z_u} = \bar{v_Z}/\bar{i_u}
-                    = \bar{v_Z}/(\bar{v_R}-\bar{v_Z})/R_R
+ \vecr{Z_u} = \vecr{v_Z}/\vecr{i_u}
+                    = \vecr{v_Z}/(\vecr{v_R}-\vecr{v_Z})/R_R
 \end{equation}
-As one would expect, this requires knowledge of the reference resistor value, but the absolute voltages are not used, but rather the ratio of absolute voltages.  This makes it important to have the two voltmeters, \(\bar{v_R}\) and \(\bar{v_Z}\) track in both amplitude and phase.  There is separate analog circuitry in the two voltmeter paths, so errors will occur.  These errors are removed by the calibration procedure where the two voltmeters are connected to the signal source and the ratio  of voltages and the difference in phase of the two is recorded. These are then applied as corrections at each impedance measurement.
+As one would expect, this requires knowledge of the reference resistor value, but the absolute voltages are not used, but rather the ratio of absolute voltages.  This makes it important to have the two voltmeters, \(\vecr{v_R}\) and \(\vecr{v_Z}\) track in both amplitude and phase.  There is separate analog circuitry in the two voltmeter paths, so errors will occur.  These errors are removed by the calibration procedure where the two voltmeters are connected to the signal source and the ratio  of voltages and the difference in phase of the two is recorded. These are then applied as corrections at each impedance measurement.
 
 \textbf{Measuring Amplitude and Phase - }The discussion of Measuring Technique, above, refers to the two voltmeters that are needed.  Most of the  implementation of voltmeters is discussed in the QEX article.\footnote{http://www.janbob.com/electron/AVNA1/Larkin-QEX-2018-May-Jun.pdf pg 8-9}
 %
