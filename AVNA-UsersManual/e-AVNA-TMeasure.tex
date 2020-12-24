@@ -5,22 +5,22 @@ The transmission measurement determines the complex input and output voltages an
 %
 \subsection{Description}
 \textbf{Complex Transmission - }The concept of voltage gain  is common.
-This is directly applied here when we take the ratio of the magnitude of the outpurt voltage to that of the input voltage.
+This is directly applied here when we take the ratio of the magnitude of the output voltage to that of the input voltage.
 That measure does not involve the phase of the signals and is the same as applying a portable DVM to the terminals and dividing the result with a calculator.
 
-The "complex" or "vector" partof a gain measurement results from making phase measurements in addition to magnitude measurements.
-Wth our VNA, we determine how much phase difference there is between the input and output sine waves.
+The "complex" or "vector" part of a gain measurement results from making phase measurements in addition to magnitude measurements.
+With our VNA, we determine how much phase difference there is between the input and output sine waves.
 This can be important for equipment such as  filters, control systems or communications networks.
 In part, it also allows a complete mathematical model of linear circuits to be constructed .  This is a valuable tool for design of circuits.
 
 It is worth noting that some of the common Radio Frequency concepts such as scattering parameters and reflection coefficients are also applicable at low frequencies.  Complex transmission (and impedance) measurements support these descriptors.  We won't attempt to cover all the possibilities here, but it would be an interesting topic for someone to explore.
 
 \subsection{Instructions}
-\textbf{Single Frequency Measurements - }This procedure parallels the impedance measurements of the previos section.
+\textbf{Single Frequency Measurements - }This procedure parallels the impedance measurements of the previous section.
 We will cover the essence of a transmission measurement using the touch screen.
 Everything covered here, and more, can be done via the USB-Serial link, as is described in the "AVNA Serial Control" section.
 
-When the AVNA is powered up, as shown in  Figure \ref{AVNA_000-label},  you have a choice of four Audio Test Instruments along with Service and Calibration functions.  As was the case for impedance measurements, we again select "AVNA" as our instrument.  The next screen, Figure  \ref{AVNA_001-label}, applies to both impedance and transmission measurements and allow us to select single or swept frequency measurements as well as to change the source resistance between 50 and 5000 Ohms.  First, check if the reference resistance is set to 50 Ohms and that the input resistance switch has the 50-Ohm termination resistor on.  This sets us up for a common 50-Ohm in and out trsnsmission measurement.
+When the AVNA is powered up, as shown in  Figure \ref{AVNA_000-label},  you have a choice of four Audio Test Instruments along with Service and Calibration functions.  As was the case for impedance measurements, we again select "AVNA" as our instrument.  The next screen, Figure  \ref{AVNA_001-label}, applies to both impedance and transmission measurements and allow us to select single or swept frequency measurements as well as to change the source resistance between 50 and 5000 Ohms.  First, check if the reference resistance is set to 50 Ohms and that the input resistance switch has the 50-Ohm termination resistor on.  This sets us up for a common 50-Ohm in and out transmission measurement.
 
 To continue with the sample transmission measurement, we will select "Single Freq."  At this point we select the frequency of measurement using the "Freq Down" and "Freq Up"  buttons.  We will suppose our frequency of interest is 5000 Hz and we will use the buttons to set that.  Now, tap on "Meas T' to be ready for transmission measurements.   At this point, the AVNA will warn us that a Cal is needed as seen on the next screen, Figure  \ref{AVNA_043-label}.
 \begin{figure}[H]
@@ -31,7 +31,7 @@ To continue with the sample transmission measurement, we will select "Single Fre
 \end{center}
 \end{figure}
 %
- We will procede to Cal by placing a wire between the input and output connectors and tapping "Cal" at the bottom.   There is a brief delay, a brief message and then the almost blank screen seen here.
+ We will proceed to Cal by placing a wire between the input and output connectors and tapping "Cal" at the bottom.   There is a brief delay, a brief message and then the almost blank screen seen here.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.75]{./images/AVNA_044.pdf}
@@ -49,7 +49,7 @@ This means the transmission path is calibrated at this one frequency and ready t
 \end{center}
 \end{figure}
 %
-When measuring impedances, I used a series combination of a 10 Ohm resistor and a 0.22 $\mu$F capacitor.  This time, for a transmission measurement, the two parts will be connected between the top two terminals. This replaces the wire used for calibration.  This is not a particulary interesting circuit to test, but it illustrates the measurement.  For single fequency measurements, the screen will update about once a second.  This is useful for testing multiple components, or when making adjustments.  Here is the result of my measurement for this RC network.
+When measuring impedances, I used a series combination of a 10 Ohm resistor and a 0.22 $\mu$F capacitor.  This time, for a transmission measurement, the two parts will be connected between the top two terminals. This replaces the wire used for calibration.  This is not a particularly interesting circuit to test, but it illustrates the measurement.  For single frequency measurements, the screen will update about once a second.  This is useful for testing multiple components, or when making adjustments.  Here is the result of my measurement for this RC network.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.75]{./images/AVNA_047.pdf}
@@ -58,11 +58,11 @@ When measuring impedances, I used a series combination of a 10 Ohm resistor and 
 \end{center}
 \end{figure}
 %
-For the measurements  just made, the source and termination impedances were both 50-Ohms.  This is the way we often measure components at frequencies above the range of our AVNA.  But, we have several other impedance options available that can be useful.  If we use the BNC connector instead of the terminals, the source impedance will be much lower, typically less than an Ohm  Also if we move the switch to not use the 50-Ohm nput terminantion, the measuring input impedance will be 1.0 megohm in parallel with about 25 pF.  This is a common setup for low frequenciy testing,  It is also compatible with many osclloscope probes.  Remember that if we change any of the source or termination impedances we need to do a new calibration.  Also, changing either of these two impedances will change the transmission mesurement values, sometimes by a large amount.
+For the measurements  just made, the source and termination impedances were both 50-Ohms.  This is the way we often measure components at frequencies above the range of our AVNA.  But, we have several other impedance options available that can be useful.  If we use the BNC connector instead of the terminals, the source impedance will be much lower, typically less than an Ohm  Also if we move the switch to not use the 50-Ohm input termination, the measuring input impedance will be 1.0 megohm in parallel with about 25 pF.  This is a common setup for low frequency testing,  It is also compatible with many oscilloscope probes.  Remember that if we change any of the source or termination impedances we need to do a new calibration.  Also, changing either of these two impedances will change the transmission measurement values, sometimes by a large amount.
 
-\textbf{Swept Frequency Measurements - } Just a we did for impedance measurements we can tutilize a built-in set of frequencies to measure transmission amplitude and phase.  The same 13 frequencies are available covering 10 to 40,000 Hz.  Under Serial Control, this same measurement can be made at an arbitraryset of frequencies (see AVNA Serial below).
+\textbf{Swept Frequency Measurements - } Just a we did for impedance measurements we can utilize a built-in set of frequencies to measure transmission amplitude and phase.  The same 13 frequencies are available covering 10 to 40,000 Hz.  Under Serial Control, this same measurement can be made at an arbitrary set of frequencies (see AVNA Serial below).
 
-The procedure parallels that of Single Frequency measurements, and so we won't repeat every detail.  Please look back to theprevious section of Single Frequency Measurements  for additional information.  We start from the main AVNA screen, Figure \ref{AVNA_001-label} where we can again select the source resistance and then select "Sweep."  At his point we can choose "Meas T" from the bottom menus.  Again, we will have a bold message reminding us to do a "Cal."  You connect a wire or short test clip between the top terminals and tap on "Cal."  After  about 10-seconds the middle of the screen is  blank and the circuit to be measured  should be connected in place of the calibration wire.  Tapping on "Single T Sweep" and waiting about 8-seconds should produce a similar screen to Figure  \ref{AVNA_032-label}, seen here.
+The procedure parallels that of Single Frequency measurements, and so we won't repeat every detail.  Please look back to the previous section of Single Frequency Measurements  for additional information.  We start from the main AVNA screen, Figure \ref{AVNA_001-label} where we can again select the source resistance and then select "Sweep."  At his point we can choose "Meas T" from the bottom menus.  Again, we will have a bold message reminding us to do a "Cal."  You connect a wire or short test clip between the top terminals and tap on "Cal."  After  about 10-seconds the middle of the screen is  blank and the circuit to be measured  should be connected in place of the calibration wire.  Tapping on "Single T Sweep" and waiting about 8-seconds should produce a similar screen to Figure  \ref{AVNA_032-label}, seen here.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.75]{./images/AVNA_032.pdf}

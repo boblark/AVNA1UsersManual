@@ -6,13 +6,13 @@ which creates the reflection, or, put another way, a quantity directly associate
 The term "Vector" refers to the fact that we always measure both the amplitude and the relative phase of impedance.  This enables us to measure a combination of resistive and reactive components.
 %
 \subsection{Description}
-Before getting to the details of the measuremets, we need to explore a few background items.
+Before getting to the details of the measurements, we need to explore a few background items.
 
-\textbf{Complex Impedance - }Using the AVNA impedance terminals, the basic measurement quantity that is often displayed is impedance described by a resistance in series with a reactance. The reactance can be either a lossless inductance or a capacitance. Mathematically, this is represented as a complex number \vecr{Z}=R+jX where R is the series resistance and X is the series reactance, both in Ohms. The AVNA uses complex-arithmetic notation for \vecr{Z} which allows mathematically sound computatiion to be done on circuit models; the user can think of it as a way to keep the resistance separate from the reactance.
+\textbf{Complex Impedance - }Using the AVNA impedance terminals, the basic measurement quantity that is often displayed is impedance described by a resistance in series with a reactance. The reactance can be either a lossless inductance or a capacitance. Mathematically, this is represented as a complex number \vecr{Z}=R+jX where R is the series resistance and X is the series reactance, both in Ohms. The AVNA uses complex-arithmetic notation for \vecr{Z} which allows mathematically sound computation to be done on circuit models; the user can think of it as a way to keep the resistance separate from the reactance.
 
 If the reactance is positive, the series component represents an inductor. Likewise, if the reactance is negative, the series component is a capacitor.  Note that this is only one of many representations. As an example, a series configuration can be converted to a parallel pair of components, neither being the same value as the series pair.  We will not attempt to cover all the possibilities here, but a few of them will be described below, as they appear in the display.
 
-\textbf{Reference Resistance - }Two differrent reference resistances can be used with the AVNA, 50 and 5,000 Ohms. The best value to use is generally the one that is in the range of the measured values. It is easy to pick 50 Ohms if the measured value is, say, 10 + j100. If the series reactance is much larger than the series resistance, we have a high-Q component that is not the easiest to measure with an AVNA. For that case we are probably going to uses the reference resistance that is closest to \(X\) since that determines the component value. If the user is trying to measure a resistance value, it is best to pick a reference resistance closest to the resistor value,
+\textbf{Reference Resistance - }Two different reference resistances can be used with the AVNA, 50 and 5,000 Ohms. The best value to use is generally the one that is in the range of the measured values. It is easy to pick 50 Ohms if the measured value is, say, 10 + j100. If the series reactance is much larger than the series resistance, we have a high-Q component that is not the easiest to measure with an AVNA. For that case we are probably going to uses the reference resistance that is closest to \(X\) since that determines the component value. If the user is trying to measure a resistance value, it is best to pick a reference resistance closest to the resistor value,
 
 A more elaborate procedure for finding the best reference resistance for a general impedance type is to first measure with 50 Ohms. Then find the geometric mean of the resistance and the reactance, that is \(\sqrt{R X}\). Then remeasure with 5,000 Ohm reference. Choose the ratio of the geometric mean to the reference resistance (50 or 5,000) which is closest to 1.0.
 
@@ -48,7 +48,7 @@ We now have the choice  of single frequency or swept measurements as well a chan
 \end{center}
 \end{figure}
 %
-The current reference, as described above, is shown on the screen. It is also shown, during AVNA measurements, at the top of the scrren in small type. Selecting the current value has no effect, and so we choose the menu item, "5k Ohms."
+The current reference, as described above, is shown on the screen. It is also shown, during AVNA measurements, at the top of the screen in small type. Selecting the current value has no effect, and so we choose the menu item, "5k Ohms."
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.75]{./images/AVNA_004.pdf}
@@ -56,7 +56,7 @@ The current reference, as described above, is shown on the screen. It is also sh
 \label{AVNA_004-label}
 \end{center}
 \end{figure}
-At this point we have chnged the reference resistance and can return to the AVNA main screen, Figure \ref{AVNA_001-label}, by tapping the menu item, "Back."
+At this point we have changed the reference resistance and can return to the AVNA main screen, Figure \ref{AVNA_001-label}, by tapping the menu item, "Back."
 
 \textbf{Measuring an Impedance - }As an example: put together a series combination of a 10 Ohm resistor and a 0.22 $\mu$F capacitor and put this across the Z terminals. To get started, we can measure this at a single frequency by tapping on the menu item, "Single Freq." The frequency can be selected from a list of 13 ranging from 10 Hz to 40 kHz by using the menu items, "Freq Down" and, "Freq Up."  For this sample measurement set the frequency to "1000 Hz".  Next, the menu item, "Meas Z" is tapped to start a continuing series of impedance measurement, as shown next.
 \begin{figure}[H]
@@ -74,7 +74,7 @@ Next, we see the series combination of  \vecr{Z}=11.07 -j700.7, which is the res
 The Q value shown of 63.3 is the ratio of the reactance magnitude to the resistance value.  We are accustomed to measuring Q of inductors, and that would be shown here if the reactance was positive.  The Q of a capacitor has a physical meanings that parallels that of an inductor.
 
 Lastly, the same screen shows the parallel RC values. At the one frequency where we measure the series connected components, we could have connected this parallel combination, and we would have measured the same quantities.
-For more details on the series/parallel equivalence, see the original QEX article.\footnote{http://www.janbob.com/electron/AVNA1/Larkin-QEX-2018-May-Jun.pdf pg. 12}
+For more details on the series/parallel equivalence, see the original QEX article.\footnote{http://www.janbob.com/electron/AVNA1/Larkin-QEX-2018-May-Jun.pdf, pg. 12}
 %
 In particular, note that, in general, both the resistance and reactance values will change between the series and parallel representations.
 
@@ -82,7 +82,7 @@ In particular, note that, in general, both the resistance and reactance values w
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.75]{./images/AVNA_007.pdf}
-\caption{Mainscreen for swept measurements.}
+\caption{Main Screen for swept measurements.}
 \label{AVNA_007-label}
 \end{center}
 \end{figure}
@@ -118,7 +118,7 @@ Otherwise, tapping on "Search Value" produces the estimate:
 \end{center}
 \end{figure}
 %
-Two different values are shown, corresponding to the two reference resistor values.  The "What?" process chooses the frequency that gives an "E" for excellent measuremnt, if possible.  Often, this differs in frequency between the two reference resistor values.  For our 10 Ohm and 0.22 $\mu$F series combination, we find the 50 Ohm reference measurmeny at 20,000 Hz and the 5000 Ohm measurement down at 200 Hz.  In either case, the capacity value works out well, but measuring the 10 Ohm resistor in series with a 3492 Ohm reactance (at 200 Hz) is looking less successful with a 19.28 indicated \(R\) value.  It would be interesting to explore this further by measuring the two components individually with swept measurements.  But we won't do that here to save the fun for others.
+Two different values are shown, corresponding to the two reference resistor values.  The "What?" process chooses the frequency that gives an "E" for excellent measurement, if possible.  Often, this differs in frequency between the two reference resistor values.  For our 10 Ohm and 0.22 $\mu$F series combination, we find the 50 Ohm reference measurement at 20,000 Hz and the 5000 Ohm measurement down at 200 Hz.  In either case, the capacity value works out well, but measuring the 10 Ohm resistor in series with a 3492 Ohm reactance (at 200 Hz) is looking less successful with a 19.28 indicated \(R\) value.  It would be interesting to explore this further by measuring the two components individually with swept measurements.  But we won't do that here to save the fun for others.
 %
 \subsection{Discussion}
 %
@@ -131,7 +131,7 @@ Two different values are shown, corresponding to the two reference resistor valu
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.75]{./images/AVNA_900.pdf}
-\caption{Functional schematic of impedance measuring circuit.} 
+\caption{Functional schematic of impedance measuring circuit.}
 \label{AVNA_900-label}
 \end{center}
 \end{figure}
