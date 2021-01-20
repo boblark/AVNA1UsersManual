@@ -26,6 +26,12 @@
 %\usepackage[xcolor=pdftex]{changes}      % text change mark-up utility
 %\definechangesauthor{EW}{orange}         % EW changes in orange
 %
+%    \usepackage{hyperref}   % Add clickable url ref (Jan 2020)
+%    \hypersetup{%
+%        colorlinks = true,
+%        linkcolor  = black
+%    }
+%
 \pagestyle{fancy}
 %
 \lfoot{\scriptsize{AVNA-Documentation.tex}}  % Put File Name Here}}
@@ -52,7 +58,7 @@
 \newcommand{\uvm}{${\mu}V/m$\xspace} % microvolts per meter
 %\newcommand{\rx}[1]{\textcolor{red}{#1}}     % red text [color.sty]
 %\newcommand{\gx}[1]{\textcolor{green}{#1}}   % green text [color.sty]
-%\newcommand{\bx}[1]{\textcolor{blue}{#1}}    % blue text [color.sty]
+\newcommand{\bx}[1]{\textcolor{blue}{#1}}    % blue text [color.sty]
 %\newcommand{\yx}[1]{\textcolor{yellow}{#1}}  % yellow text [color.sty]
 %\newcommand{\mx}[1]{\textcolor{magenta}{#1}} % magenta text [color.sty]
 %\newcommand{\cx}[1]{\textcolor{cyan}{#1}}    % cyan text [color.sty]
@@ -91,6 +97,9 @@
 %q	
 \maketitle
 \thispagestyle{fancy}
+
+Copyright \copyright 2021 Robert Larkin
+
 %
 \tableofcontents
 \listoffigures

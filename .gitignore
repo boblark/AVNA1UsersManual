@@ -11,6 +11,7 @@
 *.log
 *.toc
 *.lof
+*.soc
 
 # Main PDF
 AVNA-UsersManual.pdf
