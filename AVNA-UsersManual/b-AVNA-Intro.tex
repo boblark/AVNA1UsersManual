@@ -1,5 +1,5 @@
 \part{Features and Capabilities}
-The capabilities of Version 0.82 are the following:
+The capabilities of Version 0.82 and following versions are the following: 
 \begin{itemize}
 \item Audio Impedance Measurement
 \item Audio Vector Network Analyzer (Audio Transmission Measurements)
@@ -13,7 +13,18 @@ The capabilities of Version 0.82 are the following:
 \item AVNA Control via Serial Port
 \end{itemize}
 
-\section{Power Up}When the AVNA is turned on, it starts with an "Audio Test Instrument" screen that allows selection of the function.  This is, as usual, selected by the six touch screen buttons at the bottom of the screen.  In addition, if an $\mu$SD card is present in the Teensy 3.6 socket, a button with "S"  shows in the upper right corner for "Screen Save".
+\textbf{Terminology in this manual - }This User's Manual covers the use of the AVNA1 to make the various measurements.  Before getting into the details, a couple of notes about terminology could be useful.  First, the term "AVNA1" refers to this specific hardware and software making up the project first published in QEX.  The AVNA part, of course, refers to Audio Vector Network Analyzer.  Since the project was published, several other instruments have been added, as listed with the bullets above.  This has suggested the need for a new name, and so in this manual we will refer to "Audio Test Instrument."  The project name remains "AVNA1."   The specific instruments have separate sections covering their operation.
+
+\textbf{Terminal terminology - }There are two sets of physical terminals:
+\begin{enumerate}
+\item The impedance measuring pair of terminals that also is used anytime there is an output signal.   Because of the original use of these terminals, we refer to the connector by 'Z', the commonly used impedance symbol.  The output resistance is software controlled at either 50 or 5000 Ohms, depending on the application.
+\item The transmission input pair of terminals are always used when a signal is coming into the AVNA1.  Following the same logic, we refer to this pair of terminals by 'T'.  The input impedance is either 1 Megohm in parallel with 25 pF or 50 Ohms, depending on the 50-Ohm switch.
+\end{enumerate}
+In addition to the Z and T terminals there is a signal output, usually on a BNC connector, that has an output impedance close to zero Ohms.  This is used for specialized and always has the same signal applied to it as the Z terminals.
+
+\section{Power Up}
+\label{sect:PwrUp}
+When the AVNA1 is turned on, it starts with an "Audio Test Instrument" screen that allows selection of the function.  This is, as usual, selected by the six touch screen buttons at the bottom of the screen.  In addition, if an $\mu$SD card is present in the Teensy 3.6 socket, a button with "S"  shows in the upper right corner for "Screen Save".
 
 \begin{figure}[H]
 \begin{center}

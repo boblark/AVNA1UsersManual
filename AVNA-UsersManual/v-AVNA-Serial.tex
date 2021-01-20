@@ -1,9 +1,12 @@
 \section{AVNA Serial Interface}
-xxx
+\label{sect:Ser}   % Added labels Jan2020 RSL
+% xxx
 \subsection{Description}
+\label{subsect:SerDes}
 Commands are entered by the USB serial link to the Teensy 3.6 board. The Teensy appears to the Host computer as a \q{Serial Device}. As such, it can be controlled by an external program for graphing and the like.  For manual control, the \q{Arduino Serial Monitor} that is accessed from the Arduino IDE under the menu \q{Tools}Äù is useful.  This monitor (terminal) supports CTRL-C copy and data can be gathered that way.
 
 \subsection{General Command Syntax}
+\label{subsect:SerSyn}
 The format for all commands going to the AVNA is
 \begin{verbatim}
     CMD param1 param2 ....
@@ -13,7 +16,7 @@ where \texttt{CMD} is 1 or more characters, and the number of parameters varies.
 For common commands used for manual entry, there are single character short cuts.  For instance, \texttt{FREQ} and \texttt{F} are equivalent. See Section 5 for a complete list.
 
 \subsection{Operational Commands}
-
+\label{subsect:SerCmd}
 \begin{description}
 
 \item[\texttt{ZMEAS refR}]
@@ -149,6 +152,7 @@ An almost last item: I think I mentioned before that if you examine the screen s
 A second item: The \texttt{.hex} file has three hex encoded bytes per pixel. There are 320 x 240 pixels, or a total of 230,400 bytes of data. This is more bytes than a 16-bit address can handle. Intel Hex originally was 16-bit only, but later extended to 32-bits with the "type 4 extended address." The objcopy utility reads the extended addresses, but some Intel Hex readers may not, so be aware if there are issues.
 
 \subsection{Setup Commands}
+\label{subsect:SerSetup}
 \begin{description}
 
 \item[\texttt{PARAM1 num refR50 refR5K}]
@@ -186,6 +190,7 @@ Any of the steps can be omitted, \eg  if no precise resistor around 50 ohms is a
 \end{description}
 
 \subsection{Example of Commands}
+\label{subsect:SerEx}
 
 As an example, a swept measurement of transmission data, as commanded for non-manual use, might look like the following:  This does 1 Hz steps from 950 to 1050 Hz.  Obviously, the \texttt{F xxx R 1} repetition would be done by a loop in a control program.
 \newpage
@@ -208,6 +213,7 @@ R 1
 \end{verbatim}
 
 \section{Shortened Form of Commands}
+\label{subsect:SerShort}
 \begin{center}
 \begin{tabular}{|c||c|} \hline
 \textbf{Full Command}   &  \textbf{Abbreviation}  \\ \hline \hline
