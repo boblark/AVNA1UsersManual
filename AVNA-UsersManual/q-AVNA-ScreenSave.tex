@@ -20,3 +20,5 @@ At this point there is no method for taking the internally saved BMP files other
 \item[n is 1] Send the screen BMP image over the USB Serial link using Intel Hex
 \item[n is 2] Save the BMP image to the $\mu$SD card, exactly as is done with the touch screen command.
 \end{description}
+
+/textbf{A note - }It is a detail, but if you examine the screen saves very carefully, you will find a few pixels that are the wrong color. This is a bug in the Teensy ILI9341\_t3 library that seems to be from a timing error in the DMA read of the screen. It does not effect the usefulness of the images.
