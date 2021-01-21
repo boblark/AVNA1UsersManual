@@ -1,14 +1,17 @@
 \section{AVNA Vector Voltmeter  (VVM)}
+\label{sect:VVM}
 The AVNA allows measurement of the gain of a device, using an internal signal generator.  This is presented in terms of dB change in amplitude and shift in phase angle between the input and output.  This most useful for characterizing a device, such as a filter.  To do this, we have indeed built a voltmeter to measure the device output.  But, sometimes we would just like to see the voltage displayed directly.  This lets us probe circuits for troubleshooting  and design work.   That is what the VVM does for us.
 
 Phase information is important for some network diagnosis.  The VVM is intended to be used with the internal signal generator when phase is to be read.
 
 \subsection{Description}
+\label{subsect:VVMDescr}
 The Vector Voltmeter measures the input rms voltage at any frequency up to about 40 kHz.  The frequency is set by the frequency of Signal Generator 1 (SG\#1).  Additionally, the phase difference between SG\#1 and the input signal is displayed.  By using the SG\#1 output to drive the test circuit, this phase is constant and can be a useful diagnostic tool.   If an external generator is used the measured phase difference will change at a rate determined by the frequency difference between the SG\#1 set frequency and the external generator.    This too can be a useful measurement.  
 
 The bandwidth of the measurement is only a few Hz making it very sensitive, i.e., low noise.  The VVM operates down into the micro-volt  region.
 
 \subsection{Instructions}
+\label{subsect:VVMInstr}
 \textbf{Using the VVM - }Operation starts  by setting the frequency of SG\#1 to that appropriate for the measurement.  The generator does not need to be enabled ("On") if the signal source for the measurement is generated externally.  If the internal SG\#1 is used as the signal source, it should be enabled and the amplitude set.   Only the frequency setting will affect the VVM measurement.  The steps for controlling the signal generator are listed in the Section 6, below.
 
 If it is possible to do so, the internal SG\#1 should be used as the signal source, and this is a requirement if phase needs to be constant and representative of the circuit.
@@ -54,10 +57,10 @@ When the 50-Ohm switch is not closed, the input impedance is1-Megohm in parallel
 \end{figure}
 %
 
-One last note, if you are using an external signal source for VVM, and the measurements fail, , it is most likely that SG \#1 is not within a few Hz of the frequency of the input signal.  Often
-
+One last note, if you are using an external signal source for VVM, and the measurements fails showing only microvolts, it is most likely that SG \#1 is not within a few Hz of the frequency of the input signal.  If the external source is not sufficiently stable, this may not be an appropriate method of measurement.  A broadband RMS voltmeter could be implemented, but that is for the future.
 
 \subsection{Discussion}
+\label{subsect:VVMDiscus}
 The operation of the VVM is worthy of a few words. As a test instrument, it is closely related to the transmission measurements part of the Vector Network Analyzer AVNA). Much software is shared between the two instruments. The AVNA determines the relative gain or loss, amplitude and phase, through the transmission path. The VVM is calibrated so that the magnitude of the incoming signal is measured, along with the phase difference between Signal generator \#1 and that signal.
 
 \textbf{DSP Circuit - }Two mixer (multiplier) outputs are the in-phase and quadrature signal levels. The square root of the sum of the squares of these two provides the magnitude of the incoming signal. The Signal Generator \#1 (SG \#1) sets the frequency of the measurement. Low pass filtering after the mixers sets the requirement that the incoming signal must be within a few Hz of the SG \#1 frequency. In many cases, it is easiest to just use the Signal Generator output on the Impedance measuring terminals of the AVNA which is both on frequency and without having the phase changing with time.

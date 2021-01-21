@@ -35,7 +35,3 @@ As an alternative to the external calibrated generator,  we can use the internal
 
 \textbf{Voltage Output Calibration} - Now we need to calibrate the Audio Signal Generator (ASG) output levels.  This function assumes that the Voltage Input Calibration is correct and adjusts the ASG levels to correspond.  Therefore, this calibration \textit{must} always follow a successful Voltage Input Calibration.  For this to work, the non-ground Z and T terminals need to be wired  or test-clipped together.  Then follow the on-screen instructions.  This is very close to the same step-by -step procedure followed for the Voltage Input Calibration. 
 
-
-
-\textbf{ NEEDS ANOTHER SECTION TO LIVE IN }
-\textbf{EEPROM Update} - We keep adding items to the permanent EEPROM memory in the Teensy (this is Flash memory set up to emulate EEPROM).  At startup, the program checks the version that was used to write the EEPROM and adds nominal values for anything that was added after that version.  This prevents overwriting tune up values or the like.  If everything is up-to-date, the Serial monitor, at startup, should say, "Loading EEPROM data; Turn-on EEPROM version was 80; EEPROM Load of 536 bytes."  The first time version 80 is run, there will be notes about the updating of the data.

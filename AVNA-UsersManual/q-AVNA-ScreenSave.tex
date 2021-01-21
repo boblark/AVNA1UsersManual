@@ -1,17 +1,19 @@
 \section{Screen Saving}
+\label{sect:SSave}
 Screen saves are available for any AVNA1 screen (there are 21 different ones now), except the touch-screen calibration.   This can be especially useful for graphical displays, like the Spectrum Analyzer, but can also be a time saver for grabbing any screen.  All of the screen pictures in this manual were obtained with this function.  The screen saves can be stored in the $\mu$SD card on the Teensy 3.6, or if that is not convenient, the screen save can be transferred  to a PC  via the USB-Serial link.  All screen saves are in BMP format.
 
 \subsection{Instructions}
+\label{subsect:SSaveInstr}
 \textbf{Screen Saves under touch-screen control - } To get started,  be sure to power up the AVNA1 with  an $\mu$SD card in the holder on the Teensy 3.6.  It is not necessary to have a serial terminal, like the Arduino Serial Monitor, connected.  But if you do, and the Monitor is open, it will display a \q{ls} / \q{dir} type of directory for the files on the $\mu$SD.  This will show all files on the card.   Be aware that the dates are all set for 1980 as the AVNA1 does not have a real-time clock.
 
 In the upper-right hand corner of the screen is a small touch button with green outline and an "S".  This only appears if there is a $\mu$SD card in place.  Taking a screen shot only requires tapping on that button.  The outline will turn red during the several second screen-save period.  A file will be created with a unique name of 
 the form \texttt{AVNA\_nnn.BMP} where \texttt{nnn} is a unique number in the range of 000 to 999.  These files are all at the root directory level of the card.  Any other files or directories on the card are ignored.  More screen save files can be created, as needed.
 
-At this point there is no method for taking the saved BMP files other than to physically remove the $\mu$SD card.  Various adapters are available to read the  $\mu$SD card indifferent sorts of computers.
+At this point there is no method for taking the internally saved BMP files other than to physically remove the $\mu$SD card.  Various adapters are available to read the  $\mu$SD card indifferent sorts of computers.
 
-\textbf{Screen Saves under USB-Serial control - } There is capability to save a screen shot by a Serial Command.  The BMP save can be to an uSD card put into the Teensy 3.6 board, or it can be sent to the controlling PC as an Intel Hex file.  The Intel Hex is necessary as the USB-Serial connection cannot transfer full 8-bit bytes due to control code conflicts.  The Intel Hex format is somewhat clumsy for this job, but it works.  
+\textbf{Screen Saves under USB-Serial control - } There is capability to save a screen shot by a Serial Command.  The BMP file save can be either written to an internal $\mu$SD card, or  sent to the controlling PC as an Intel Hex file.  The Intel Hex is necessary as the USB-Serial connection cannot transfer full 8-bit bytes due to control code conflicts.  The Intel Hex format is somewhat clumsy for this job, but it works.  
 
-Serial commands are all covered in Section 12.  The command follows, but refer to Section 12 for details, including the several file types and conversions of those file types.
+ The command follows, but refer to Section \ref{subsect:SerSyn} for many more details, including the several file types and conversions of those file types.
 
 \texttt{SCREENSAVE n} performs a single screen save of whatever is shown on the screen.  The parameter n is
 \begin{description}

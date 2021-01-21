@@ -1,9 +1,11 @@
 \section{Audio Transmission Measurement}
+\label{sect:Trans}
 This second major category of VNA measurements consists of generating a sine wave and applying this to some form of network.
  The network must have at least two sets of connections that act as the input and output.
 The transmission measurement determines the complex input and output voltages and then computes the ratio of the voltage magnitudes along with the difference in phase.
 %
 \subsection{Description}
+\label{subsect:TDescr}
 \textbf{Complex Transmission - }The concept of voltage gain  is common.
 This is directly applied here when we take the ratio of the magnitude of the output voltage to that of the input voltage.
 That measure does not involve the phase of the signals and is the same as applying a portable DVM to the terminals and dividing the result with a calculator.
@@ -16,6 +18,7 @@ In part, it also allows a complete mathematical model of linear circuits to be c
 It is worth noting that some of the common Radio Frequency concepts such as scattering parameters and reflection coefficients are also applicable at low frequencies.  Complex transmission (and impedance) measurements support these descriptors.  We won't attempt to cover all the possibilities here, but it would be an interesting topic for someone to explore.
 
 \subsection{Instructions}
+\label{subsect:TInstr}
 \textbf{Single Frequency Measurements - }This procedure parallels the impedance measurements of the previous section.
 We will cover the essence of a transmission measurement using the touch screen.
 Everything covered here, and more, can be done via the USB-Serial link, as is described in the "AVNA Serial Control" section.
@@ -75,6 +78,7 @@ All 13 measurements have been made, but only 7 are displayed on the screen.  Use
 
 %
 \subsection{Discussion}
+\label{subsect:TDiscus}
 The calibration measures the voltage magnitude and phase with the signal source connected to the voltmeter.  This is saved and used for following circuit transmission measurements.  For that, the ratio of the new voltage magnitude to the calibrate magnitude is used to find the relative transmission magnitude.  Similarly, the calibrate phase is subtracted from the new measurement phase.  If the calibrate jumper wire is still in place, this gives a relative  transmission magnitude of 1.000 and a measurement phase of 0.000 degrees.
 
 Averaging is built into these measurements to decrease the noise observed.  This increases the accuracy at higher amounts of attenuation.  It is inherent that lower frequencies take longer amounts of time.  For our lowest frequency of 10 Hz, each cycle requires 0.1 seconds.  The averaging algorithm used requires integral numbers of cycles, and the time adds up.
