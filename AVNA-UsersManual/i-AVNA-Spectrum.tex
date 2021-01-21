@@ -3,7 +3,7 @@
 The AVNA project started with impedance and transmission analysis which is the normal set for a network analyzer.  However, the same hardware is capable of supporting other tests with the only changes being in the firmware.  This leads to a more general descriptor of "Audio Instrument."  One of the resulting instruments is the Spectrum Analyzer, covered here.  Note that, in addition to displaying spectra,  there some specialized tests for the measurement of Signal-to-Noise Ratio and SINAD.  These measurements are covered in this section as well, since they work as part of the Spectrum Analyzer.
 \subsection{Description}
 \label{subsect:ASADescr}
-Within a frequency range of 10 Hz to 40 kHz, the power at the right-hand "input" terminals is displayed.  Unlike other instruments, the display is graphical with power in dBm (relative to a milliwatt).  The frequency runs along the bottom and is always 0.0 at the left edge and up to 3, 6, 12, 24 or 48 kHz on the right side. 
+Within a frequency range of 10 Hz to 40 kHz, the power at the T input terminals is displayed.  Unlike instruments lie the AVNA, the display is graphical with power in dBm (relative to a milliwatt).  The frequency runs along the bottom and is always 0.0 at the left edge and up to 3, 6, 12, 24 or 48 kHz on the right side. 
 
 The dBm calibration assumes an input resistance of 50-Ohms and that resistor should be switch in for the scale reference to be meaningful.  If the input idoes not have the 50-Ohms switched in, it has a 1-Megohm input impedance.  For the high impedance case, the 0 dBM line at the top corresponds to 0.223 V rms or 0.632-V p-p.
 
@@ -13,7 +13,7 @@ As will be described in detail below, the spectrum analyzer can also do noise an
 
 \subsection{Instructions}
 \label{subsect:ASAInstr}
-Everything starts with the Instrument Home screen shown in  Figure \ref{AVNA_000-label},  you have a choice of four Audio Test Instruments where for this case we select, "Spectrum Analyzer."  This comes up sweeping with a 48 kHz width displaying an 80 dB range.   This is fine for many purposes and an input can be connected to the right-hand input terminals.  Be careful to not put more than about 1-Volt p-p input.  The ADC will be driven past its range, causing spurious response signals to be displayed, as well as for the proper response to be clipped in amplitude.  At some point, considerably higher, damage can occur to the instrument.
+Everything starts with the Instrument Home screen shown in  Figure \ref{AVNA_000-label},  you have a choice of four Audio Test Instruments where for this case we select, "Spectrum Analyzer."  This comes up sweeping with a 48 kHz width displaying an 80 dB range.   This is fine for many purposes and an input can be connected to the T input terminals.  Be careful to not put more than about 1-Volt p-p input.  The ADC will be driven past its range, causing spurious response signals to be displayed, as well as for the proper response to be clipped in amplitude.  At some point, considerably higher, damage can occur to the instrument.
 
 \begin{figure}[H]
 \begin{center}
