@@ -34,14 +34,14 @@
 %
 \pagestyle{fancy}
 %
-\lfoot{\scriptsize{AVNA-Documentation.tex}}  % Put File Name Here}}
+\lfoot{\scriptsize{AVNA-UsersManual.tex}}  % Put File Name Here}}
 \cfoot{\thepage\ of \pageref{LastPage}}
 \rfoot{\scriptsize{\today}}
 \lhead{}
 \chead{}
-\rhead{AVNA Documentation V0.83}
+\rhead{AVNA1 Documentation V0.83}
 %
-\title{\textbf{AVNA User's Manual}}
+\title{\textbf{AVNA1 User's Manual}}
 \author{Bob Larkin W7PUA \\ Evans Wetmore K3VFA} %  name \\ address \\ and so on
 %
 \newcommand{\q}[1]{\textquotedblleft#1\textquotedblright} % puts text in quotes
@@ -66,8 +66,8 @@
 %\newcolumntype{d}[1]{D{.}{.}{#1}}   % for decimal columns [dcolumn.sty]
 %                                      #1 is number of decimal places
 %
-%\renewcommand{\abstractname}{Executive Summary} % Changes "Abstract" to
-%                                                   "Executive Summary"
+\renewcommand{\abstractname}{Introduction} % Changes "Abstract" to
+%                                                   "Introduction"
 %
 %\renewcommand{\familydefault}{\sfdefault} % makes sans serif font default
 %
@@ -94,13 +94,14 @@
 %\input{picmacs.tex}  % Cut-and-Paste Pictures Macro
 %
 %\input{table}   % This enables Wichura Table Macro
-%q	
+%q
 \maketitle
 \thispagestyle{fancy}
 
-Copyright \copyright 2021 Robert Larkin
+ \begin{center}
+ \copyright 2021 Robert Larkin
+ \end{center}
 
-%
 \tableofcontents
 \listoffigures
 %\listoftables
@@ -121,7 +122,7 @@ Copyright \copyright 2021 Robert Larkin
 \input{i-AVNA-Spectrum}
 \input{k-AVNA-SigGen}
 \input{m-AVNA-NoiseMeasure}
-\input{o-AVNA-Delay}
+%\input{o-AVNA-Delay}
 \input{q-AVNA-ScreenSave}
 \input{s-AVNA-Calibration}
 \input{t-AVNA-System.tex}

@@ -1,10 +1,10 @@
-\section{AVNA Serial Interface}
+\section{AVNA1 Serial Interface}
 \label{sect:Ser}   % Added labels Jan2020 RSL
 % xxx
 
 \subsection{Description}
 \label{subsect:SerDes}
-Commands are entered by the USB serial link to the Teensy 3.6 board. The Teensy appears to the Host computer as a \q{Serial Device}. As such, it can be controlled by an external program for graphing and the like.  For manual control, the \q{Arduino Serial Monitor} that is accessed from the Arduino IDE under the menu \q{Tools}Äù is useful.  This monitor (terminal) supports CTRL-C copy and data can be gathered that way.
+Commands are entered by the USB serial link to the Teensy 3.6 board. The Teensy appears to the Host computer as a \q{Serial Device}. As such, the teensy can be controlled by an external program for graphing and the like.  For manual control, the \q{Arduino Serial Monitor} that is accessed from the Arduino IDE under the menu \q{Tools} is useful.  This monitor (terminal) supports CTRL-C copy, and data can be gathered that way.
 
 \subsection{General Command Syntax}
 \label{subsect:SerSyn}
@@ -119,13 +119,13 @@ Unless modified by a \texttt{SERPAR} command, the unit defaults to \newline \tex
 
 \item[\texttt{SCREENSAVE n}] does a single save of whatever is shown on the screen.  The parameter n is
 \begin{description}
-\item[n is 1] Send the screen BMP image over the USB Serial link using Intel Hex
-\item[n is 2] Save the BMP image to the uSD card, exactly as is done with the touch screen command.
+\item[n = 1] Send the screen BMP image over the USB Serial link using Intel Hex
+\item[n = 2] Save the BMP image to the $\mu$SD card, exactly as is done with the touch screen command.
 \end{description}
 
 For example, "\texttt{SCREENSAVE 1} $<Enter>$" will cause the transmission of 14,409 lines of Intel Hex.
 
-For n=2, there is serial feedback in the form of the new file name, only if you have set "\texttt{VERBOSE 1}".  Otherwise it is silent.
+For n=2, there is serial feedback in the form of the new file name, only if you have set "\texttt{VERBOSE 1}".  Otherwise the serial monitor is silent.
 
 Now for n=1, the next step is to create a file from the huge collection of hex data at the Serial Monitor.  After printing the hex data, the cursor will be at the bottom.  Starting at that point, the steps are:
 \begin{enumerate}
@@ -137,10 +137,9 @@ Now for n=1, the next step is to create a file from the huge collection of hex d
 \item Paste this entire hex area into your text editor and save it to a a file with type \texttt{.hex}. That might be (for Linux) \\ \texttt{/home/me/Documents/myscreen.hex}.  If you are not using Linux, the file directory format will be different, but the file names can be the same.
 \end{enumerate}
 
-To this point the procedure is very similar for different operating systems.  The next step is to convert the HEX file to a BMP file and that varies depending on operating system.   What follows is for Linux and Windows 10.  textit{Does anyone have a procedure for Mac OSX?}  
+To this point the procedure is very similar for different operating systems.  The next step is to convert the HEX file to a BMP file and that varies depending on operating system.   What follows is for Linux and Windows 10.  \textit{Does anyone have a procedure for Mac OSX?}
 
-
-\textbf{HEX to BMP file conversion on Linux}:
+\subsection{HEX to BMP file conversion on Linux}:
 \begin{enumerate}
 \item Determine if your computer has \texttt{objcopy} installed by typing \texttt{objcopy -version} in a terminal.  If it is not present, download it with your apt-get procedure.
 
@@ -149,20 +148,20 @@ To this point the procedure is very similar for different operating systems.  Th
 \item The HEX file can be deleted, if desired.
 \end{enumerate}
 
-\textbf{HEX to BMP file conversion on Windows 10}  Thanks to Ray, W7GLF, for working this out:
+\subsection{HEX to BMP file conversion on Windows 10}  Thanks to Ray, W7GLF, for working this out:
 \begin{enumerate}
- \item Download the latest version of the application of srecord from sourceforge:
-\linebreak
-\textbf{\texttt{https://sourceforge.net/projects/srecord/files/srecord-win32/}}
-\linebreak
+ \item Download the latest version of the application of \texttt{srecord} from Sourceforge:
+
+{\scriptsize\ \textbf{\texttt{https://sourceforge.net/projects/srecord/files/srecord-win32/}}}
+
 
 The file name will be similar to \texttt{srecord-1.64-win32.zip}.  Copy the zip file into a folder of your choice.  Right click on the file in file explorer and select \texttt{Extract All}.  Leave the folder to extract to as is.  When the extraction is done you will have a number of files in the subfolder.  The one we care about is named \texttt{srec\_cat.exe}.  You can copy this file wherever you like.  You can delete the other files if you wish or read the pdf to see other record features.
 
-\item Start a command window to run the program.  To start a command, right click the Start Button icon in the lower right edge of the screen.  Select the run menu and type \texttt{cmd.exe <return>}.  You will then need to go to the folder where you put texttt{srec\_cat} using the cd (change directory) command. 
+\item Start a command window to run the program.  To start a command, right click the Start Button icon in the lower right edge of the screen.  Select the run menu and type \texttt{cmd.exe <return>}.  You will then need to go to the folder where you put \texttt{srec\_cat} using the cd (change directory) command.
 
 Type \begin{verbatim} cd /d c:\myVNA\srecord\end{verbatim} if you put the srec\_cat.exe file in that folder.
 
-Alternatively you can use file explorer and navigate to the folder that contains the file \texttt{srec\_cat.exe}.  Hold the CTRL KEY and the Shift KEY at the same time and right click on the surrounding folder.  A menu will appear and one of the choices should be Open PowerShell Menu Here.  Click on that and a PowerShell window should appear.  It will already be in the correct directory.  You still need to start a normal command window here so type \texttt{cmd.exe <return>} to start the command window from within the powershell window.  
+Alternatively you can use file explorer and navigate to the folder that contains the file \texttt{srec\_cat.exe}.  Hold the CTRL KEY and the Shift KEY at the same time and right click on the surrounding folder.  A menu will appear and one of the choices should be Open PowerShell Menu Here.  Click on that and a PowerShell window should appear.  It will already be in the correct directory.  You still need to start a normal command window here so type \texttt{cmd.exe <return>} to start the command window from within the powershell window.
 
 \item You can convert the Intel hex file by typing the following command in the command window:  \texttt{srec\_cat  <input file name> -intel --address-length=4 -o <output file name>  -bin}.
 
@@ -262,5 +261,3 @@ R 1
 \end{tabular}
 \end{center}
 
-\subsection{Discussion}
-xxx
