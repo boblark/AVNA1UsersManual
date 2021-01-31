@@ -3,29 +3,29 @@
 The AVNA project started with impedance and transmission analysis which is the normal set for a network analyzer.  However, the same hardware is capable of supporting other tests with the only changes being in the firmware.  This leads to a more general descriptor of "Audio Instrument."  One of the resulting instruments is the Spectrum Analyzer, covered here.  Note that, in addition to displaying spectra,  there some specialized tests for the measurement of Signal-to-Noise Ratio and SINAD.  These measurements are covered in this section as well, since they work as part of the Spectrum Analyzer.
 \subsection{Description}
 \label{subsect:ASADescr}
-Within a frequency range of 10 Hz to 40 kHz, the power at the \q{T} input terminals is displayed.  Unlike instruments like the AVNA1, the display is graphical with power in dBm (relative to a milliwatt).  The frequency runs along the bottom axis and is always 0.0 at the left edge and up to 3, 6, 12, 24 or 48 kHz on the right side. 
+Within a frequency range of 10 Hz to 40 kHz, the power at the \q{T} input terminals is displayed.  Unlike instruments like the AVNA1, the display is graphical with power in dBm (relative to a milliwatt).  The frequency runs along the bottom axis and is always 0.0 at the left edge and up to 3, 6, 12, 24 or 48 kHz on the right side as chosen from the bottom-row menu. 
 
-The dBm calibration assumes an input resistance of 50-Ohms and that resistor should be switch in for the scale reference to be meaningful.  If the input does not have the 50-Ohms switched in, it has a 1-Megohm input impedance.  For the high impedance case, the 0 dBM line at the top corresponds to 0.223 V rms or 0.632-V p-p.
+The dBm calibration assumes an input resistance of 50-Ohms and that resistor should be switched in for the scale reference to be meaningful.  If the input does not have the 50-Ohms switched in, it has a 1-Megohm input impedance.  For the high impedance case, the 0 dBM line at the top corresponds to 0.223 V rms or 0.632-V p-p.
 
-The dB per division and the dB offset for the dBm scale can be varied by bottom row menu items.
+The dB per division and the dB offset for the dBm scale can be varied by the bottom-row menu.
 
 As will be described in detail below, the spectrum analyzer can also do noise and  distortion measurements.
 
 \subsection{Instructions}
 \label{subsect:ASAInstr}
-Everything starts with the Instrument Home screen shown in  Figure \ref{AVNA_000-label},  from which the user has a choice of four Audio Test Instruments. In this case we select, "\textsf{Spectrum Analyzer}"  which comes up sweeping with a 48 kHz width displaying an 80 dB range.   This is fine for many purposes and an input can be connected to the \q{T} input terminals.  Be careful to not input more than about 1-Volt p-p input.  The ADC will be driven past its range, causing spurious response signals and inaccurate levels to be displayed.  If the input level is excessive,  damage can occur to the instrument.
+Everything starts with the Instrument Home screen shown in  Figure \ref{AVNA_000-label},  from which the user has a choice of four Audio Test Instruments. In this case we select, "\textsf{Spectrum Analyzer}"  which comes up sweeping with a 48 kHz width displaying an 80 dB range.   This is fine for many purposes and an input can be connected to the \q{T} input terminals.  Be careful to not input more than about 1-Volt p-p input or the ADC will be driven past its range, causing spurious response signals and inaccurate levels to be displayed.  Additionally, if the input level is very excessive,  damage can occur to the instrument.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.75]{./images/AVNA_019.pdf}
-\caption{Spectrum Analyzer  showing a 996 Hz sine wave.  }
+\caption{Spectrum Analyzer  showing a 996 Hz sine wave.  The frequency range has been reduced to 3 kHz by selecting a 6 kHz sampling rate. }
 \label{AVNA_019-label}
 \end{center}
 \end{figure}
 %
 The screen should look somewhat like that in Figure \ref{AVNA_019-label}.  There will be no spike, as seen at about 1 kHz since there is no signal being applied.  The frequency scale will be different do to adjustments we will discuss in the next paragraph.  It is normal for the noise line to be higher on the left half of the screen and to rise to roughly -50 dBm at the very left edge.
 
-\subsection{Frequency Coverage} To change the frequency range being displayed, we tap on the "\textsf{Freq}" button on the bottom row.  This brings up a screen allowing changes to the maximum frequency and describing parameters  being used.  We have been talking about the maximum display frequency that has been set initially to 48 kHz.  The frequency changing control screen works in terms of "Sample Rate" that is twice the maximum display frequency being displayed.  In addition, a parameter, "Maximum Frequency" is shown that is 5/6 of the maximum display frequency.  This is unnecessarily confusing, but reflects that we can only work with inputs up to half of the ADC sampling frequency and further that there is a low-pass filter as part of the ADC that starts cutting off at 5/6 of the sampling frequency.  We show the full frequency range on the display, but we need to remember that the last two divisions on the screen are attenuated and should not be considered as numerically accurate.
+\subsection{Frequency Coverage} To change the frequency range being displayed, we tap on the "\textsf{Freq}" button on the bottom row.  This brings up a screen allowing changes to the maximum frequency and describing parameters  being used.  We have been talking about the maximum display frequency that has been set initially to 48 kHz.  The frequency changing control screen works in terms of "Sample Rate" that is twice the maximum display frequency being displayed.  In addition, a parameter, "Maximum Frequency" is shown that is 5/6 of the maximum display frequency.  This is unnecessarily confusing, but reflects that we can only work with inputs up to half of the ADC sampling frequency and further that there is a low-pass filter as part of the ADC that starts cutting off at about 5/6 of the half sampling frequency.  For the 96 kHz sampling frequency, this all means that the highest accurate measurement frequency is about 40KHz.  We show the full frequency range on the display, but we need to remember that the last two divisions on the screen are attenuated and should not be considered as numerically accurate.
 
 So now we can change the total frequency range by adjusting the "Sample Frequency" down with the button on the bottom row.  The first button tap cuts the sample rate in half to 48 kHz.  If we continue tapping this button, we will get to the lowest range with a Sample Frequency of 6 kHz.  This will display 0 to 3 kHz as was seen in Figure  \ref{AVNA_019-label}.  We will later, under Signal Generators, see how to generate a sine wave as seen in the figure.
 

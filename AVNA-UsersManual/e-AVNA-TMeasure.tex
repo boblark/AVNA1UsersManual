@@ -61,13 +61,13 @@ For the measurements just made, the source and termination impedances were both 
 The procedure parallels that of Single Frequency measurements, and so we won't repeat every detail.  Please look back to the previous section of Single Frequency Measurements  for additional information.  We start from the main AVNA screen, Figure \ref{AVNA_001-label}, where we can again select the source resistance and then select "\textsf{Sweep}".  At his point we can choose "\textsf{Meas T}" from the bottom menus.  Again, we will have a bold message reminding us to do a "\textsf{Cal}".  You connect a wire or short test clip between the top terminals and tap on "\textsf{Cal}".  After  about 10 seconds the middle of the screen should be blank. Then the circuit to be measured should be connected in place of the calibration wire.  Tapping on "\textsf{Single T Sweep}" and waiting about 8 seconds should produce a similar screen to Figure  \ref{AVNA_032-label} seen here.
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.75]{./images/AVNA_032.pdf}
+\includegraphics[scale=0.75]{./images/AVNA_037.pdf}
 \caption{AVNA Swept frequency Transmission measurement screen.}
-\label{AVNA_032-label}
+\label{AVNA_037-label} 
 \end{center}
 \end{figure}
 %
-All 13 measurements have been made, but only 7 are displayed on the screen.  Use the bottom buttons, "\textsf{Disp Frq Up}" and "\textsf{Disp Frq Down}" to display the range of interest.  When you change the circuit and want to re- sweep, again tap "\textsf{Single T Sweep}" and wait a few seconds for the new results.  You can also go back to recalibrate at any time by disconnecting the network and connecting a through jumper wire and tapping "\textsf{Cal}".
+All 13 measurements have been made, but only 7 are displayed on the screen.  Use the bottom buttons, "\textsf{Disp Frq Up}" and "\textsf{Disp Frq Down}" to display the range of interest.  When you change the circuit and want to re- sweep, again tap "\textsf{Single T Sweep}" and wait a few seconds for the new results.  You can also go back to re calibrate at any time by disconnecting the network and connecting a through jumper wire and tapping "\textsf{Cal}".
 
 %
 \subsection{Discussion}
@@ -75,3 +75,9 @@ All 13 measurements have been made, but only 7 are displayed on the screen.  Use
 The calibration procedure measures the voltage magnitude and phase with the signal source connected to the voltmeter.  This is saved and used for subsequent  circuit transmission measurements.  For those, the ratio of the new voltage magnitude to the calibrate magnitude is used to find the relative transmission magnitude.  Similarly, the calibrate phase is subtracted from the new measurement phase.  (If the calibrate jumper wire is still in place, this gives a relative transmission magnitude of 1.000 and a measurement phase of 0.000 degrees.)
 
 Averaging is built into these measurements to decrease the effects of noise observed.  This increases the accuracy at higher amounts of attenuation.  It is inherent that lower frequencies take longer amounts of time to average.  For our lowest frequency of 10 Hz, each cycle requires 0.1 seconds.  The averaging algorithm used requires integral numbers of cycles, and the time adds up.
+
+\textbf{Transmission Delay - }In future revisions there will be a formal measurement of group delay added to the AVNA.  Meanwhile, if the delay measurement is desired, this can created externally by using a pair of phase measurements at two nearby frequencies.  The group delay is found from these by
+\begin{equation}
+\tau=(-1/360)(\phi_1-\phi_2)/(f_1-f_2)
+\end{equation}
+where $\phi_1$ and $\phi_2$ are the two phase measurements in degrees, and $f_1$ and $f_2$ are the two frequencies in Hz.  The resulting delay $\tau$ is in seconds.
