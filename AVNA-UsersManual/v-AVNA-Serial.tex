@@ -134,7 +134,7 @@ Now for n=1, the next step is to create a file from the huge collection of hex d
 
 \item To get the hex to the clipboard, just hold down the CTRL key and hit '\texttt{c}'. There is no feedback from this. There is no menu item for this step, only the Ctrl-c.
 
-\item Paste this entire hex area into your text editor and save it to a a file with type \texttt{.hex}. That might be (for Linux) \\ \texttt{/home/me/Documents/myscreen.hex}.  If you are not using Linux, the file directory format will be different, but the file names can be the same.
+\item Paste this entire hex area into your text editor and save it to a a file with type \texttt{.hex}. That might be (for Linux) \\ \texttt{/home/me/Documents/myscreen.hex}.\\  \textit{If you are not using Linux, the file directory format will be different, but the file names can be the same.}
 \end{enumerate}
 
 To this point the procedure is very similar for different operating systems.  The next step is to convert the HEX file to a BMP file and that varies depending on operating system.   What follows is for Linux and Windows 10.  \textit{Does anyone have a procedure for Mac OSX?}
@@ -151,8 +151,7 @@ To this point the procedure is very similar for different operating systems.  Th
 \subsection{HEX to BMP file conversion on Windows 10}  Thanks to Ray, W7GLF, for working this out:
 \begin{enumerate}
  \item Download the latest version of the application of \texttt{srecord} from Sourceforge:
-
-{\scriptsize\ \textbf{\texttt{https://sourceforge.net/projects/srecord/files/srecord-win32/}}}
+{\footnotesize\ \textbf{\texttt{https://sourceforge.net/projects/srecord/files/srecord-win32/}}}
 
 
 The file name will be similar to \texttt{srecord-1.64-win32.zip}.  Copy the zip file into a folder of your choice.  Right click on the file in file explorer and select \texttt{Extract All}.  Leave the folder to extract to as is.  When the extraction is done you will have a number of files in the subfolder.  The one we care about is named \texttt{srec\_cat.exe}.  You can copy this file wherever you like.  You can delete the other files if you wish or read the pdf to see other record features.
@@ -161,7 +160,7 @@ The file name will be similar to \texttt{srecord-1.64-win32.zip}.  Copy the zip 
 
 Type \begin{verbatim} cd /d c:\myVNA\srecord\end{verbatim} if you put the srec\_cat.exe file in that folder.
 
-Alternatively you can use file explorer and navigate to the folder that contains the file \texttt{srec\_cat.exe}.  Hold the CTRL KEY and the Shift KEY at the same time and right click on the surrounding folder.  A menu will appear and one of the choices should be Open PowerShell Menu Here.  Click on that and a PowerShell window should appear.  It will already be in the correct directory.  You still need to start a normal command window here so type \texttt{cmd.exe <return>} to start the command window from within the powershell window.
+Alternatively you can use file explorer and navigate to the folder that contains the file \texttt{srec\_cat.exe}.  Hold the CTRL key and the SHIFY key at the same time and right click on the surrounding folder.  A menu will appear and one of the choices should be \texttt{Open PowerShell Here}.  Click on that and a PowerShell window should appear.  It will already be in the correct directory.  You still need to start a normal command window here so type \texttt{cmd.exe <return>} to start the command window from within the powershell window.
 
 \item You can convert the Intel hex file by typing the following command in the command window:  \texttt{srec\_cat  <input file name> -intel --address-length=4 -o <output file name>  -bin}.
 
@@ -215,7 +214,6 @@ Any of the steps can be omitted, \eg  if no precise resistor around 50 ohms is a
 \label{subsect:SerEx}
 
 As an example, a swept measurement of transmission data, as commanded for non-manual use, might look like the following:  This does 1 Hz steps from 950 to 1050 Hz.  Obviously, the \texttt{F xxx R 1} repetition would be done by a loop in a control program.
-\newpage
 \begin{verbatim}
 T 50
 SWEEP

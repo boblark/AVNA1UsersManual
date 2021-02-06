@@ -1,11 +1,9 @@
 \section{AVNA1 Calibration}
 \label{sect:Cal}
 
-Calibration allows us to adjust our measurements to be in some agreement with various standards.  This gives us control over, say, the voltage difference between our Volt, and the "standard Volt."  Since  most of us don't have direct access to the standard Volt
- \footnote{Although not important to our measurements, the standard Volt is an amazing collection of strange hardware
-\textbf{  \texttt{https://en.wikipedia.org/wiki/Josephson\_voltage\_standard}  }
-}
-we instead find ourselves at the end of a succession of measurement transfers, using perhaps a commercial digital Voltmeter as our local comparison device.  In the big picture, calibration is complex and sometimes esoteric, but at the home lab level, we just use the best reference(s) we can find! 
+Calibration allows us to adjust our measurements to be in some agreement with various standards.  This gives us control over, say, the voltage difference between our Volt, and the "standard Volt."  Since  most of us don't have direct access to the standard Volt,\footnote{Although not important to our measurements, the standard Volt is an amazing collection of strange hardware
+\textbf{\texttt{https://en.wikipedia.org/wiki/Josephson\_voltage\_standard}}}
+we instead find ourselves at the end of a succession of measurement transfers, using perhaps a commercial digital Voltmeter as our local comparison device.  In the big picture, calibration is complex and sometimes esoteric, but at the home lab level, we just use the best reference(s) we can find!
 
 So, in that context, the calibrations needed for the AVNA1, including the Audio Test Instrument additions are as follows.
 
@@ -21,9 +19,9 @@ So, in that context, the calibrations needed for the AVNA1, including the Audio 
 \label{subsect:CalInstr}
 \subsection{Touch Screen Calibration} There is some variability to the scaling of the touch screen.  Calibration ties the grid for the visual screen to that of the touch screen, that operates independently.  The original AVNA1 software used nominal x and y calibration values.  With the addition of this Touch Screen Calibration,   tapping at the upper-left corner and the lower right corner, allows us to find the lowest and highest x and y touch values.
 
-Let's go through this step-by-step.  Starting at the usual home screen, we tap on "\textsf{Service \& Cal}" button. This brings up the screen for selecting various calibrations.  We tap on "\textsf{Touch Cal}" to bring up a screen with a list of the needed steps. Note that once a touch screen calibration is started, it should be completed.  Follow  the three steps on the screen, observing the minimum and maximum values that have been found.  Any number of taps is allowed.  Finally,  the upper-right corner is tapped at which point the values are made permanent. 
+Let's go through this step-by-step.  Starting at the usual home screen, we tap on "\textsf{Service \& Cal}" button. This brings up the screen for selecting various calibrations.  We tap on "\textsf{Touch Cal}" to bring up a screen with a list of the needed steps. Note that once a touch screen calibration is started, it should be completed.  Follow  the three steps on the screen, observing the minimum and maximum values that have been found.  Any number of taps is allowed.  Finally,  the upper-right corner is tapped at which point the values are made permanent.
 
-Multiple taps with a stylus may find slightly more extreme values improving the calibration.   In using this, be sure to tap on the screen many times, seeing if more extreme values can be found.  Also, there is no true "Cancel" for this test, except that if the upper-right corner is tapped before any  other, it will continue to use the old values.  It is safe to just re-calibrate the screen.  The test is fast and can be redone any number of times. 
+Multiple taps with a stylus may find slightly more extreme values improving the calibration.   In using this, be sure to tap on the screen many times, seeing if more extreme values can be found.  Also, there is no true "Cancel" for this test, except that if the upper-right corner is tapped before any  other, it will continue to use the old values.  It is safe to just re-calibrate the screen.  The test is fast and can be redone any number of times.
 
 After tapping on the upper-right corner, a confirmation screen is displayed, showing that the new values have been registered.  If no corner tapping was done, this last screen just shows the current stored calibration values.
 
@@ -33,5 +31,5 @@ If we do this calibration step-by-step, after connecting our 1000 Hz signal sour
 
 As an alternative to the external calibrated generator,  we can use the internal Signal Generator \#1 (SG\#1) and an external Voltmeter.  The problem with this is that the generator is not calibrated at this point in time and needs to be brought to the needed 0.100 Volts RMS by trial-and-measurement.  Instructions for setting SG\#1 are in Section 6.  The frequency should, of course, be set to 1000 Hz, and SG\#1 must be enabled.   This method relies completely on the voltage measured with a good external voltmeter.
 
-\subsection{Voltage Output Calibration} Now we need to calibrate the Audio Signal Generator (ASG) output levels.  This function assumes that the Voltage Input Calibration is correct and adjusts the ASG levels to correspond.  Therefore, this calibration \textit{must} always follow a successful Voltage Input Calibration.  For this to work, the non-ground, hot \q{Z} and \q{T} terminals need to be wired  or test-clipped together.  Then follow the on-screen instructions.  This is very close to the same step-by-step procedure followed for the Voltage Input Calibration. 
+\subsection{Voltage Output Calibration} Now we need to calibrate the Audio Signal Generator (ASG) output levels.  This function assumes that the Voltage Input Calibration is correct and adjusts the ASG levels to correspond.  Therefore, this calibration \textit{must} always follow a successful Voltage Input Calibration.  For this to work, the non-ground, hot \q{Z} and \q{T} terminals need to be wired  or test-clipped together.  Then follow the on-screen instructions.  This is very close to the same step-by-step procedure followed for the Voltage Input Calibration.
 

@@ -8,7 +8,7 @@
 %\usepackage{eurosym}  %  use \euro to make a Euro symbol
 \usepackage{fancyhdr,xspace}
 \usepackage{graphicx,epstopdf}  % Use for graphics with TeXShop
-%\usepackage{geometry}
+\usepackage[margin=1.0in]{geometry}
 %\usepackage{dcolumn}    % Controls number of decimal places in tabular
 %\usepackage{steinmetz}  % phase and angle notation
 %\usepackage[printonlyused,withpage]{acronym}
@@ -25,12 +25,6 @@
 %
 %\usepackage[xcolor=pdftex]{changes}      % text change mark-up utility
 %\definechangesauthor{EW}{orange}         % EW changes in orange
-%
-%    \usepackage{hyperref}   % Add clickable url ref (Jan 2020)
-%    \hypersetup{%
-%        colorlinks = true,
-%        linkcolor  = black
-%    }
 %
 \pagestyle{fancy}
 %
@@ -78,7 +72,6 @@
 %
 %\SetWatermarkText{CONFIDENTIAL}   % This replaces DRAFT with CONFIDENTIAL
 %\SetWatermarkScale{0.7}           % The {0.7} sizes CONFIDENTIAL
-%
 \begin{document}
 \addtocounter{secnumdepth}{2} % This allows subsubsections to be numbered
 \addtocounter{tocdepth}{2} % This allows subsubsections in Table of Contents
@@ -94,13 +87,12 @@
 %\input{picmacs.tex}  % Cut-and-Paste Pictures Macro
 %
 %\input{table}   % This enables Wichura Table Macro
-%q
 \maketitle
 \thispagestyle{fancy}
 
- \begin{center}
- \copyright 2021 Robert Larkin
- \end{center}
+\begin{center}
+\copyright 2021 Robert Larkin
+\end{center}
 
 \tableofcontents
 \listoffigures
@@ -113,9 +105,9 @@
 %\abstract{\textit{Text goes here}}
 %\rmfamily  % Restores Roman Font for Remainder of Document
 %
-\setlength{\parskip}{0.15in} % Puts 0.25" between paragraphs
-
+\setlength{\parskip}{0.25in}
 \input{b-AVNA-Intro}
+\setlength{\parskip}{0.1in}
 \input{c-AVNA-ZMeasure}
 \input{e-AVNA-TMeasure}
 \input{g-AVNA-VectorVolts}

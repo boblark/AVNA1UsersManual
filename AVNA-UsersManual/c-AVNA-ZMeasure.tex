@@ -10,7 +10,7 @@ The term "Vector" refers to the fact that we always measure both the amplitude a
 \label{subsect:ZDescr}
 Before getting to the details of the measurements, we need to explore a few background items.
 
-\subsection{Complex Impedance}Using the AVNA1 impedance (Z) terminals , the basic measurement quantity that is often displayed is impedance described by a resistance in series with a reactance. The reactance can be either a lossless inductance or a capacitance. Mathematically, this is represented as a complex number \vecr{Z}=R+jX where R is the series resistance and X is the series reactance, both in Ohms. The AVNA1 uses complex-arithmetic notation for \vecr{Z} which allows mathematically sound computation to be done on circuit models; the user can think of it as a way to keep the resistance separate from the reactance.
+\subsection{Complex Impedance}Using the AVNA1 impedance \q{T} terminals , the basic measurement quantity that is often displayed is impedance described by a resistance in series with a reactance. The reactance can be either a lossless inductance or a capacitance. Mathematically, this is represented as a complex number $\vec{Z}$=R+jX where R is the series resistance and X is the series reactance, both in Ohms. The AVNA1 uses complex arithmetic notation for $\vec{Z}$ which allows mathematically sound computation to be done on circuit models; the user can think of it as a way to keep the resistance separate from the reactance.
 
 If the reactance is positive, the series component represents an inductor. Likewise, if the reactance is negative, the series component is a capacitor.  Note that this is only one of many representations. As an example, a series configuration can be converted to a parallel pair of components, neither being the same value as the series pair.  We will not attempt to cover all the possibilities here, but a few of them will be described below, as they appear in the display.
 
@@ -18,13 +18,13 @@ If the reactance is positive, the series component represents an inductor. Likew
 
 A more elaborate procedure for finding the best reference resistance for a general impedance type is to first measure with 50 Ohms. Then find the geometric mean of the resistance and the reactance, that is \(\sqrt{R X}\). Then remeasure with 5,000 Ohm reference. Choose the ratio of the geometric mean to the reference resistance (50 or 5,000) which is closest to 1.0.
 
-Closest in all these decisions means by ratio, not by subtraction. For instance 4,000 Ohms has a ratio with 50 Ohms of  \( \frac{4000}{50} = 80\) whereas the ratio with 5,000 Ohms is \( \frac{5000}{4000} = 1.25\). The latter is closer to 1.0 than the former.  Note that we put the larger value on top of the ratio for convenience in comparing the two results.
+The best reference resistance decision is calculated by ratio, not by subtraction. For instance 4,000 Ohms has a ratio with 50 Ohms of  \( \frac{4000}{50} = 80\) whereas the ratio with 5,000 Ohms is \( \frac{5000}{4000} = 1.25\). The latter is closer to 1.0 than the former.  Note that we put the larger value on top of the ratio for convenience in comparing the two results.
 %
 \subsection{Instructions}
 \label{subsect:ZInstr}
-\textbf{Getting Started - }Here is a step-by-step description of a single frequency impedance measurement followed by a description of a swept impedance measurement. This will all be done directly from the touch screen. Everything covered here, and more, can be done via the USB-Serial link, as is described in the "AVNA1 Serial Control" section.
+\textbf{Getting Started - }Here is a step-by-step description of a single frequency impedance measurement followed by a description of a swept impedance measurement. This will all be done directly from the touch screen. Everything covered here, and more, can be done via the USB-Serial link, as is described in the "AVNA1 Serial Interface" section.
 
-When the AVNA1 is powered up you have a choice of four Audio Test Instruments along with Service and Calibration functions.
+When the AVNA1 is powered up, you have a choice of four Audio Test Instruments along with Service and Calibration functions.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.75]{./images/AVNA_000.pdf}
@@ -42,7 +42,7 @@ Referring to Figure \ref{AVNA_000-label}, we are now at the main AVNA1 Audio Tes
 \end{center}
 \end{figure}
 %
-We now have the choice  of single frequency or swept measurements as well as changing of the Reference Resistance described above. A last choice is the "What?" function for exploring components without knowing much about them. To continue our impedance measurement, we select "\textsf{Set Ref R}".
+We now have the choice  of single frequency or swept measurements as well as changing of the Reference Resistance described above. A last choice is the "\textsf{What?}" function for exploring components without knowing much about them. To continue our impedance measurement, we select "\textsf{Set Ref R}".
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.75]{./images/AVNA_003.pdf}
@@ -51,7 +51,7 @@ We now have the choice  of single frequency or swept measurements as well as cha
 \end{center}
 \end{figure}
 %
-The current reference, as described above, is shown on the screen. It is also shown, during AVNA measurements, at the top of the screen in small type. Selecting the current value has no effect, and so we choose the menu item, "\textsf{5k Ohms}".
+The current reference, as described above, is shown on the screen. It is also shown, during AVNA measurements, at the top of the screen in small type. Selecting the current value has no effect, and so in this example we choose the menu item, "\textsf{5k Ohms}".
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.75]{./images/AVNA_004.pdf}
@@ -72,14 +72,12 @@ At this point we have changed the reference resistance and can return to the AVN
 A couple of items to note:  First, this measurement repeats every second or so.
 This is useful if you are measuring multiple components, or if you want to do mental averaging of the component values.
 
-Next, we see the series combination of  \vecr{Z}=11.07 -j700.7, which is the resistance and reactance. I measured the 10 Ohm resistor, without the capacitor and saw 9.81 Ohms with a 50 Ohm reference and 8.23 Ohms with a 5000 Ohm reference, so the 11.07 Ohm value which is probably a combination of the difficulty in measuring the resistor with 700 Ohms reactance in series as well as some loss in the capacitor.  The 9.81 Ohms is very close to the measured DC value. Then we see the translation of the reactance value to a capacity of 227.1 nF (or 0.2271 $\mu$F).  Often this is the value we are looking for.
+Next, we see the series combination of  $\vec{Z}$=11.07 -j700.7, which is the resistance and reactance. I measured the 10 Ohm resistor, without the capacitor and saw 9.81 Ohms with a 50 Ohm reference and 8.23 Ohms with a 5000 Ohm reference, so the 11.07 Ohm value which is probably a combination of the difficulty in measuring the resistor with 700 Ohms reactance in series as well as some loss in the capacitor.  The 9.81 Ohms is very close to the measured DC value. Then we see the translation of the reactance value to a capacity of 227.1 nF (or 0.2271 $\mu$F).  Often this is the value we are looking for.
 
-The Q value shown of 63.3 is the ratio of the reactance magnitude to the resistance value.  We are accustomed to measuring Q of inductors, and that would be shown here if the reactance was positive.  The Q of a capacitor has a physical meanings that parallels that of an inductor.
+The Q value shown of 63.3 is the ratio of the reactance magnitude to the resistance value.  We are accustomed to measuring Q of inductors, and that would be shown here if the reactance were positive.  The Q of a capacitor has a physical meaning that parallels that of an inductor.
 
 Lastly, the same screen shows the parallel RC values. At the one frequency where we measure the series connected components, we could have connected this parallel combination, and we would have measured the same quantities.
-For more details on the series/parallel equivalence, see the original QEX article.\footnote{\textbf{\texttt{http://www.janbob.com/electron/AVNA1/Larkin-QEX-2018-May-Jun.pdf}}, pg. 12}
-%
-In particular, note that, in general, both the resistance and reactance values will change between the series and parallel representations.
+For more details on the series/parallel equivalence, see the original QEX article.\footnote{\textbf{\texttt{http://www.janbob.com/electron/AVNA1/Larkin-QEX-2018-May-Jun.pdf}}, pg. 12} In particular, note that in general, both the resistance and reactance values will change between the series and parallel representations.
 
 \textbf{Swept Impedance Measurements - }  We do not have a graphical presentation of frequency swept impedance data.  Instead we have a tabular listing. To do this measurement from the single frequency version, we tap on "\textsf{Back}", bringing back the screen of Figure \ref{AVNA_001-label}. At this point we could change the reference resistor to 50 Ohms, but not for this exercise. Instead, we tap on "\textsf{Sweep}", bringing up the following screen.
 \begin{figure}[H]
@@ -99,7 +97,7 @@ We can change the 7 screen displayed frequencies shown in Figure \ref{AVNA_009-l
 \end{figure}
 %
 The display shows the impedance for seven frequencies.
-The menu items, "\textsf{Disp Frq Down}" and "\textsf{Disp Frq Up}" allow the displayed frequencies to be shifted down or up to cover the entire 10 to 40,000 Hz range.  The impedance is shown in  \(R+jX\) format. It can be seen that negative reactance values display with a minus sign in front of the value. Next in the display line is a translation of the  \(jX\) value to either a capacitance or inductor value. The units, in this case,  "nF" change with component value.  In the right hand column is a rough measure of measurement quality. A single letter \textsf{E, G, P} corresponds to (\textsf{E})xcellent, (\textsf{G})ood, or (\textsf{P})oor. These indicate the difference between the impedance and the reference resistance.
+The menu items, "\textsf{Disp Frq Down}" and "\textsf{Disp Frq Up}" allow the displayed frequencies to be shifted down or up to cover the entire 10 to 40,000 Hz range.  The impedance is shown in  \(R+jX\) format. It can be seen that negative reactance values display with a minus sign in front of the value. Next in the display line is a translation of the  \(jX\) value to either a capacitance or inductor value. The units, in this case,  "\textsf{nF}" change with component value.  In the right hand column is a rough measure of measurement quality. A single letter \textsf{E, G, P} corresponds to (\textsf{E})xcellent, (\textsf{G})ood, or (\textsf{P})oor. These indicate the difference between the impedance and the reference resistance.
 The \textsf{E}, \textsf{G}, and \textsf{P} designations should not be taken too literally, but if the letter shows "\textsf{P}" or even "\textsf{G}",  you might consider the values and whether to re-measure with the other reference resistance.
 
 Going back to the AVNA main menu, there is a menu item, "\textsf{What?}".  This is handy if the component type or value is unknown, or maybe a quick answer is wanted.  This starts with the following menu that describes what to do.
@@ -120,14 +118,11 @@ The only option available is to omit measuring at 10, 20 and 50 Hz that speeds u
 \end{center}
 \end{figure}
 %
-Two different values are shown, corresponding to the two reference resistor values.  The "\textsf{What?}" process chooses the frequency that gives an "E" for excellent measurement, if possible.  Often, this differs in frequency between the two reference resistor values.  For our 10 Ohm and 0.22 $\mu$F series combination, we find the 50 Ohm reference measurement at 20,000 Hz and the 5000 Ohm measurement down at 200 Hz.  In either case, the capacity value works out well, but measuring the 10 Ohm resistor in series with a 3492 Ohm reactance (at 200 Hz) is looking less successful with a 19.28 indicated \(R\) value.  It would be interesting to explore this further by measuring the two components individually with swept measurements. (We won't do that here to save the fun for others.)
+Two different values are shown, corresponding to the two reference resistor values.  The "\textsf{What?}" process chooses the frequency that gives an "E" for excellent measurement, if possible.  Often, this differs in frequency between the two reference resistor values.  For our 10 Ohm and 0.22 $\mu$F series combination, we find the 50 Ohm reference measurement at 20,000 Hz and the 5000 Ohm measurement down at 200 Hz.  In either case, the capacitive value works out well, but measuring the 10 Ohm resistor in series with a 3492 Ohm reactance (at 200 Hz) is looking less successful with a 19.28 indicated \(R\) value.  It would be interesting to explore this further by measuring the two components individually with swept measurements. (We won't do that here to save the fun for others.)
 %
 \subsection{Discussion}
 %
-\textbf{Measurement Technique - } There are two commonly used methods of measuring impedance: the unbalanced Wheatstone bridge
-%
-\footnote{The classic Wheatstone bridge, \textbf{\texttt{https://en.wikipedia.org/wiki/Wheatstone\_bridge}}}
-\footnote{The Wheatstone bridge in various AC/RF forms, \textbf{\texttt{http://g3ynh.info/zdocs/bridges/part\_1.html}}}
+\textbf{Measurement Technique - } There are two commonly used methods of measuring impedance: the unbalanced Wheatstone bridge.\footnote{The classic Wheatstone bridge,\textbf{\texttt{https://en.wikipedia.org/wiki/Wheatstone\_bridge}}} \footnote{The Wheatstone bridge in various AC/RF forms,\textbf{\texttt{http://g3ynh.info/zdocs/bridges/part\_1.html}}}
 %
  and the series resistor method.   The latter method is used in the AVNA.
 \begin{figure}[H]
@@ -138,17 +133,16 @@ Two different values are shown, corresponding to the two reference resistor valu
 \end{center}
 \end{figure}
 %
-Figure \ref{AVNA_900-label} shows the deceptively simple measurement circuit.  A software Direct Digital Synthesis (DDS) in the Teensy DSP creates a sine wave signal at a frequency between 10 and 40,000 Hz.  This is converted to an analog voltage by the left DAC on the Teensy Audio Adapter board which then goes to an audio amplifier producing the analog signal  \vecr{$V_R$} seen on the diagram.
-The overhead bar indicates that this is a complex voltage where we care about the phase of the sine wave as well as the amplitude.  \vecr{$\mathbf{V_R}$} is applied to the series combination of our reference resistor, \(R_R\) and the unknown impedance, \vecr{$\mathbf{Z_u}$}.  This results in a current through the pair  of \(\vecr{$\mathbf{V_R}$}  /  (R_R +   \vecr{$\mathbf{Z_u}$})\) .  By measuring the complex voltage at the top of the unknown, \vecr{$\mathbf{v_Z}$} we can determine this current as
+Figure \ref{AVNA_900-label} shows the deceptively simple measurement circuit.  A software Direct Digital Synthesis (DDS) in the Teensy DSP creates a sine wave signal at a frequency between 10 and 40,000 Hz.  This is converted to an analog voltage by the left DAC on the Teensy Audio Adapter board which then goes to an audio amplifier producing the analog signal  $\vec{V_R}$ seen on the diagram.
+The overhead bar indicates that this is a complex voltage where we care about the phase of the sine wave as well as the amplitude.  \vecr{$\mathbf{V_R}$} is applied to the series combination of our reference resistor, $R_R$ and the unknown impedance, $\vec{\mathbf{Z_u}}$.  This results in a current through the pair  of \(\vec{\mathbf{V_R}}  /  (R_R +   \vec{\mathbf{Z_u}})\).  By measuring the complex voltage at the top of the unknown, $\vec{\mathbf{v_Z}}$ we can determine this current as
 \begin{equation}
- \vecr{$\mathbf{i_u}$}=(\vecr{$\mathbf{V_R}$}-\vecr{$\mathbf{V_Z}$})/R_R
+ \vec{\mathbf{i_u}}=\vec{\mathbf{V_R}}-\vec{\mathbf{V_Z}}/R_R
 \end{equation}
  This in turn allows calculating the unknown impedance as
 \begin{equation}
-\vecr{$\mathbf{Z_u}$} =\vecr{$\mathbf{V_Z}$}/\vecr{$\mathbf{i_u}$}
-                    =R_R\vecr{$\mathbf{V_Z}$}/(\vecr{$\mathbf{V_R}$}-\vecr{$\mathbf{V_Z}$})
+\vec{\mathbf{Z_u}} =\vec{\mathbf{V_Z}}/\vec{\mathbf{i_u}}               =R_R \times\vec{\mathbf{V_Z}}/\vec{\mathbf{V_R}}-\vec{\mathbf{V_Z}}
 \end{equation}
-As one would expect, this requires knowledge of the reference resistor value, but the absolute voltages are not used, but rather the ratio of absolute voltages.  This makes it important to have the two voltmeters,\( \vecr{$\mathbf{V_R}$}\) and \( \vecr{$\mathbf{V_Z}$}\) track in both amplitude and phase.  There is separate analog circuitry in the two voltmeter paths, so errors will occur.  These errors are removed by the calibration procedure where the two voltmeters are connected to the signal source and the ratio  of voltages and the difference in phase of the two is recorded. These are then applied as corrections at each impedance measurement.
+As one would expect, this requires knowledge of the reference resistor value, but the absolute voltages are not used, but rather the ratio of absolute voltages.  This makes it important to have the two voltmeters, $\vec{\mathbf{V_R}}$ and $\vec{\mathbf{V_Z}}$ track in both amplitude and phase.  There is separate analog circuitry in the two voltmeter paths, so errors will occur.  These errors are removed by the calibration procedure where the two voltmeters are connected to the signal source and the ratio  of voltages and the difference in phase of the two is recorded. These are then applied as corrections at each impedance measurement.
 
 \textbf{Measuring Amplitude and Phase - }The discussion of Measuring Technique, above, refers to the two voltmeters that are needed.  The  implementation of voltmeters is discussed in the QEX article referenced above, pages 8-9,
 and won't be repeated here.  The basic process is to generate a pair of software sine waves that are 90 degrees apart in phase but at the exact measurement frequency.  Each of these is multiplied (mixed) with the signal being measured and then low-pass filtered.  This produces the two complex voltages, needed for the impedance calculation.  All of the mixing and filtering occurs in the Teensy DSP.
